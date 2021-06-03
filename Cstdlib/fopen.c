@@ -7,7 +7,7 @@ int main(void)
 	
 	fd = fopen("file.txt", "w+");
 
-	fprintf(fd, "%s %s %s %d", "We", "are", "in", 2021);
+	fprintf(fd, "%s %s %s %d\n", "We", "are", "in", 2021);
 
 	fclose(fd);
 
