@@ -18,10 +18,17 @@ int main()
 			max = a[i];
 			printf("The maxnumber is:%d \n", max);
 
-	int min = a[0];
 	for(i=1;i<ARRAYSIZE;i++)
 		if(min > a[i])
 			min = a[i];
 			printf("The minnumber is:%d \n", min);
 	return 0;
 }
+
+
+
+
+
+
+
+
