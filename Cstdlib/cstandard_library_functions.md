@@ -91,15 +91,48 @@ The following example shows the usage of atexit() function.
 
 
 
+### C library function - exit()
 
+[exit(3) — Linux manual page](https://www.man7.org/linux/man-pages/man3/exit.3.html)
 
+The C library function void exit(int status) terminates the calling process immediately. Any open file descriptors belonging to the process are closed and any children of the process are inherited by process 1, init, and the process parent is sent a SIGCHLD signal.
 
+**Declaration**
 
+Following is the declaration for exit() function.
 
+```c
+noreturn void exit(int status);
+```
 
+**Parameters**
 
+status — This is the status value returned to the parent process.
 
+**Return Value**
 
+This function does not return any value.
+
+Example
+
+```c
+  1 #include <stdio.h>
+  2 #include <stdlib.h>
+  3 
+  4 int main(void)
+  5 {
+  6         printf("Start of the program...\n");
+  7 
+  8         printf("Start of the program...\n");
+  9 
+ 10         exit(0);
+ 11 
+ 12         printf("Start of the program...\n");
+ 13 
+ 14         return 0;
+ 15 }
+
+```
 
 
 
