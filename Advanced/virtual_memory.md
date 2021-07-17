@@ -1,0 +1,86 @@
+# Vritual Memory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Additional Reading
+
+[L16: virtual memory from MIT](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c16/c16s1/)
+
+[The Nitty Gritty Of In Memory Computing](https://www.nextplatform.com/2015/09/07/the-nitty-gritty-of-in-memory-computing/)
+
+[What every programmer should known about memory](https://www.gwern.net/docs/cs/2007-drepper.pdf)
+
+[What a C programmer should known about memory.](https://marek.vavrusa.com/memory/)
+
+[Anatomy a program in memory.](https://manybutfinite.com/post/anatomy-of-a-program-in-memory/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

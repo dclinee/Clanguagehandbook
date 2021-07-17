@@ -2,11 +2,106 @@
 
 **collection of built-in functions**
 
-## C Library
+## C Standard Library Header File
+
+### C Library - <stdio.h>
+
+The stdio.h header defines three variable types, several macros, and various functions for performing input and output.
+
+**Library Variables**
+
+Following are the variable types defined in the header stdio.h:
+
+| Name       | Variable & Description                                       |
+| ---------- | :----------------------------------------------------------- |
+| **size_t** | This is the unsigned integral type and is the result of the sizeof keyword. |
+| **FILE**   | This is an object type suitable for storing information for a file stream. |
+| **fpos_t** | This is an object type suitable for storing any position in a file. |
+
+Library Macros
+
+Following are the macros defined in the header stdio.h:
+
+|        Name        | Macros & Description                                         |
+| :----------------: | :----------------------------------------------------------- |
+|        NULL        | This macro is the value of a null pointer constant.          |
+|       _IOFBF       | (_IOFBF,_IOLBF,_IONBF)These are the macros which expand to integral constant expressions with distinct values and suitable for use as third argument to the setvbuf function. |
+|       BUFSIZ       | This macro is an integer, which represents the size of the buffer used by the setbuf function. |
+|        EOF         | This macro is a negative integer, which indicates that the end-of-file has been reached. |
+|     FOPEN_MAX      | This macro is an integer, which represents the maximum number of files that the system can guarantee to be opened simultaneously. |
+|    FILENAME_MAX    | This macro is an integer, which represents the longest length of a char array suitable for holding the longest possible filename. If the implementation imposes no limit, then this value should be the recommended maximum value. |
+|      L_tmpnam      | This macro is an integer, which represents the longest of a char array suitable for holding the longest possible temporary filename created by the tmpnam function. |
+|      SEEK_CUR      | SEEK_CUR,SEEK_END, and SEEK_SET                  These macros are used in the fseek function to locate different positions in a file. |
+|      TMP_MAX       | This macro is the maximum number of unique flenames that the function tmpnam can generate. |
+| stderr,stdn,stdout | These macros are pointer to FILE types which correspond to the standard error, standard input, and standard output streams. |
+
+**Library Functions**
+
+Following are the functions defined in the header stdio.h:
+
+| Name                         | Function & Description                                       |
+| ---------------------------- | :----------------------------------------------------------- |
+| **int fclose(FILE *stream)** | Closes the stream.  All buffers are flushed.                 |
+| void clearerr(FILE *stream)  | Clears the end-of-file and error indicators for the given stream. |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
+|                              |                                                              |
 
 
 
 ## C library function
+
+**What are C Standard Library Functions?**
+
+**How to use them in our C programming?**
+
+We'll learn about the standard library functions in C.
+
+More specifically, what are they, different library functions in C and how to use them in our program.
+
+C Standard library functions or simply C Library functions are inbuilt functions in C programming.
+
+The prototype and data definitions of these functions are present in their respective header files. To use these functions we need to include the header file in our program.
+
+If you try to use library functions without including the header file, you will get an error.
+
+
 
 
 
@@ -134,21 +229,223 @@ Example
 
 ```
 
+### C library function - strlen()
+
+**Description**
+
+The C library function **size_t strlen(cost char *str)** computes the length of the string str up to, but not including the terminating null character.
+
+Declaration
+
+Following is the declaration for strlen() function.
+
+**Synopsis**
+
+```c
+#include <stdio.h>
+size_t strlen(const char *str)
+```
+
+**Parameters**
+
+str - This is the string whose length is to be found.
+
+**Return value**
+
+This function returns the length of string.
+
+Example
+
+This following example shows the usage of strlen() function.
+
+```c
+  1 /* example of the  strlen() function*/
+  2 
+  3 #include <stdio.h>
+  4 #include <string.h>
+  5 
+  6 int main(void)
+  7 {
+  8         char str[100];
+  9         int len;
+ 10 
+ 11         strcpy(str, "This is an example of C library function strl    en().");
+ 12 
+ 13         len = strlen(str);
+ 14         printf("The length of |%s| is |%d|\n", str, len);
+ 15 
+ 16         return 0;
+ 17 }
+
+```
+
+### C library function - strcpy()
+
+**Description**
+
+The C library function char *strcpy(char *dest, const char *src) copies the string pointed to, by src to dest.
+
+Declaration
+
+Following is the declaration for strcpy() function.
+
+**Synopsis：**
+
+```c
+#include <stdio.h>
+char *strcpy(char *dest, const char *src);
+```
+
+**Parameters**
+
+dest — This is the pointer to the destination array where the content is to be copied.
+
+src — This is the string to be copied.
+
+**Return value**
+
+This returns a pointer to the destination string dest.
+
+**Example** 
+
+The following example shows the usage of strcpy() function.
+
+```c
+  1 /* example of the strcpy() function */
+  2 
+  3 #include <stdio.h>
+  4 #include <string.h>
+  5 
+  6 int main()
+  7 {
+  8         char src[40];
+  9         char dest[100];
+ 10         int len;
+ 11 
+ 12         memset(dest, '\0', sizeof(dest));
+ 13         strcpy(src, "This is an example of strcpy() function");
+ 14         strcpy(dest, src);
+ 15         len = strlen(dest);
+ 16 
+ 17         printf("Final copied string: %s\n", dest);
+ 18         printf("The length of dest is : %d\n", len);
+ 19 
+ 20         return 0;
+ 21 }
+
+```
+
+### C library function - strncpy()
+
+Description
+
+The C library function **char *strncpy(char *dest, const char *src, size_t n)** copies up to n characters from the string pointed to, by src to dest. In a case where the length of src is less than that of n, the remainder of dest will be padded with null bytes.
+
+**Declaration**
+
+Following is the declaration for strncpy() function.
+
+```c
+#include <string.h>
+char *strncpy(char *dest, const char *src, size_t n)
+```
+
+**Parameters**
+
+dest - This is the pointer to the destination array where the content is to be copied.
+
+src - This is the string to be copied.
+
+n - The number of character to be copied from source.
+
+**Return value**
+
+This function returns the final copy the copied string.
+
+**Example**
+
+The following example shows the usage of strncpy() function.
+
+Here we have used function memset() to clear the memory location.
+
+```c
+  1 /* example of the strncpy() function */
+  2 
+  3 #include <stdio.h>
+  4 #include <string.h>
+  5 
+  6 int main()
+  7 {
+  8         char src[40];
+  9         char dest[12];
+ 10 
+ 11         memset(dest, '\0', sizeof(dest));
+ 12         strcpy(src, "This is an example of the strncpy().");
+ 13         strncpy(dest, src, 10);
+ 14 
+ 15 
+ 16         printf("Final copied string: %s\n" ,dest);
+ 17 
+ 18         return 0;
+ 19 }
+
+```
+
+### C library function - memset()
+
+**Description**
+
+The C library function **void *memset(void *str, int c, size_t n)** copies the character c(an unsigned char) to the first n characters of the string pointed to, by the argument str.
+
+**Declaration**
+
+Following is the declaration for memset() function.
+
+```c
+#include <string.h>
+void *memset(void *str, int c, size_t n);
+```
+
+**Parameters**
+
+str - This is a pointer to the block of memory to fill.
+
+c - This is the value to be set. The value is passed as an int, but the function fills the block of memory using the unsigned char conversion of this value.
+
+n - This is the number of bytes to be set to the value.
+
+Return value
+
+This function returns a pointer to the memory area str.
 
 
 
+Example
 
+The following example shows the usage of memset() function.
 
+```c
+  1 /* example of the strncpy() function */
+  2 
+  3 #include <stdio.h>
+  4 #include <string.h>
+  5 
+  6 int main()
+  7 {
+  8         char src[40];
+  9         char dest[12];
+ 10 
+ 11         memset(dest, '\0', sizeof(dest));
+ 12         strcpy(src, "This is an example of the strncpy().");
+ 13         strncpy(dest, src, 10);
+ 14 
+ 15 
+ 16         printf("Final copied string: %s\n" ,dest);
+ 17 
+ 18         return 0;
+ 19 }
 
-
-
-
-
-
-
-
-
-
+```
 
 
 
