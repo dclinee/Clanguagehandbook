@@ -39,49 +39,49 @@ Following are the macros defined in the header stdio.h:
 
 Following are the functions defined in the header stdio.h:
 
-| Name                         | Function & Description                                       |
-| ---------------------------- | :----------------------------------------------------------- |
-| **int fclose(FILE *stream)** | Closes the stream.  All buffers are flushed.                 |
-| void clearerr(FILE *stream)  | Clears the end-of-file and error indicators for the given stream. |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
-|                              |                                                              |
+| Name                                                | Function & Description                                       |
+| --------------------------------------------------- | :----------------------------------------------------------- |
+| **int fclose(FILE *stream)**                        | Closes the stream.  All buffers are flushed.                 |
+| void clearerr(FILE *stream)                         | Clears the end-of-file and error indicators for the given stream. |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+| FILE *fopen(const char *filename, const char *mode) | Opens the filename pointed to by filename using the given mode. |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
+|                                                     |                                                              |
 
 
 
@@ -100,6 +100,54 @@ C Standard library functions or simply C Library functions are inbuilt functions
 The prototype and data definitions of these functions are present in their respective header files. To use these functions we need to include the header file in our program.
 
 If you try to use library functions without including the header file, you will get an error.
+
+C library function - fopen()
+
+**Description**
+
+The C library function **FILE *f**open(const char *filename, const char *mode)** opens the filename pointed to, by filename using the given mode.
+
+**Declaration**
+
+Following is the declaration for fopen() function.
+
+```c
+FILE *fopen(const char *filename, const char *mode);
+```
+
+Parameters
+
+filename - This is the C string containing the name of the file to be opened.
+
+mode - This is the C string containing a file access mode.
+
+**Example**
+
+The following example shows the usage of fopen() function.
+
+```c
+  1 #include <stdio.h>
+  2 
+  3 int main()
+  4 {
+  5         FIFL *fp;
+  6         int c;
+  7 
+  8         fp = fopen("file.txt", "r");
+  9         while(1)
+ 10         {
+ 11                 c = fgetc(fp);
+ 12                 if(feof(fp)){
+ 13                         break;
+ 14                 }
+ 15                 printf("%c", c);
+ 16         }
+ 17         fclose(fp);
+ 18 
+ 19         return 0;
+ 20 }
+
+```
 
 
 
