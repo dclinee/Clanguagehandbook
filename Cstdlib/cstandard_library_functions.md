@@ -43,7 +43,7 @@ Following are the functions defined in the header stdio.h:
 | --------------------------------------------------- | :----------------------------------------------------------- |
 | **int fclose(FILE *stream)**                        | Closes the stream.  All buffers are flushed.                 |
 | void clearerr(FILE *stream)                         | Clears the end-of-file and error indicators for the given stream. |
-|                                                     |                                                              |
+| int feof(FILE *stream)                              | Tests the end-of-file indicator for the given stream.        |
 |                                                     |                                                              |
 |                                                     |                                                              |
 |                                                     |                                                              |
@@ -101,7 +101,69 @@ The prototype and data definitions of these functions are present in their respe
 
 If you try to use library functions without including the header file, you will get an error.
 
-C library function - fopen()
+**C library function - feof()**
+
+**Description**
+
+The C library function int feof(FILE *stream) tests the end-of-file indicator for the given stream.
+
+**Declaration**
+
+Following is the declaration for feof() function.
+
+```c
+#include <stdio.h>
+int feof(FILE *stream);
+
+```
+
+**Parameters**
+
+stream - This is the pointer to a FILE object that identifies the stream.
+
+**Return value**
+
+This function returns a non-zero value when End-of-File indicator associated whit the stream is set, else zero is returned.
+
+```c
+  1 #include <stdio.h>
+  2 
+  3 int main()
+  4 {
+  5         FILE *fp;
+  6         int c;
+  7 
+  8 
+  9         fp = fopen("file.txt", "r");
+ 10         if(fp == NULL){
+ 11 
+ 12                 perror("Error in opening file");
+ 13                 return(-1);
+ 14         }
+ 15 
+ 16 
+ 17         while(1){
+ 18 
+ 19                 c = fgetc(fp);
+ 20                 if(feof(fp)){
+ 21                         break;
+ 22                 }
+ 23                 printf("%c", c);
+ 24         }
+ 25 
+ 26         fclose(fp);
+ 27         return 0;
+ 28 }
+
+```
+
+
+
+
+
+
+
+**C library function - fopen()**
 
 **Description**
 
