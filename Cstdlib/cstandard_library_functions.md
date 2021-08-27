@@ -44,7 +44,7 @@ Following are the functions defined in the header stdio.h:
 | **int fclose(FILE *stream)**                        | Closes the stream.  All buffers are flushed.                 |
 | void clearerr(FILE *stream)                         | Clears the end-of-file and error indicators for the given stream. |
 | int feof(FILE *stream)                              | Tests the end-of-file indicator for the given stream.        |
-|                                                     |                                                              |
+| int ferror(FILE *stream)                            | Tests the error indicator for the given stream.              |
 |                                                     |                                                              |
 |                                                     |                                                              |
 | FILE *fopen(const char *filename, const char *mode) | Opens the filename pointed to by filename using the given mode. |
@@ -100,6 +100,58 @@ C Standard library functions or simply C Library functions are inbuilt functions
 The prototype and data definitions of these functions are present in their respective header files. To use these functions we need to include the header file in our program.
 
 If you try to use library functions without including the header file, you will get an error.
+
+**C library function - ferror()**
+
+**Description**
+
+The C library function int ferror(FILE *stream) tests the error indicator for the given stream.
+
+**Declaration**
+
+Following is the declaration for ferror() function.
+
+```c
+int ferror(FILE *stream)
+```
+
+**Parameters**
+
+stream — This is the pointer to a FILE object that identifies the stream.
+
+**Return Value**
+
+If the error indicator associated with the stream was set, the function returns a non-zero value else, it returns a zero value.
+
+**Example**
+
+```c
+1 #include <stdio.h>
+  2 
+  3 int main()
+  4 {
+  5         FILE *fp;
+  6         char c;
+  7 
+  8         fp = fopen("file.txt", "w");
+  9 
+ 10         c = fgetc(fp);
+ 11 
+ 12         if (ferror(fp)) {
+ 13                 printf("Error in reading from : file.txt\n");
+ 14         }
+ 15 
+ 16         clearerr(fp);
+ 17 
+ 18         if (ferror(fp)) {
+ 19                 printf("Error in reading from file : file.txt\    n");
+ 20         }
+ 21         fclose(fp);
+ 22 
+ 23         return (0);
+ 24 }
+
+```
 
 **C library function - feof()**
 
