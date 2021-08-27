@@ -1,3 +1,4 @@
+// C library function ferror
 #include <stdio.h>
 
 int main()
