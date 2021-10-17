@@ -18,7 +18,7 @@ Following are the variable types defined in the header stdio.h:
 | **FILE**   | This is an object type suitable for storing information for a file stream. |
 | **fpos_t** | This is an object type suitable for storing any position in a file. |
 
-Library Macros
+**Library Macros**
 
 Following are the macros defined in the header stdio.h:
 
@@ -45,7 +45,7 @@ Following are the functions defined in the header stdio.h:
 | void clearerr(FILE *stream)                         | Clears the end-of-file and error indicators for the given stream. |
 | int feof(FILE *stream)                              | Tests the end-of-file indicator for the given stream.        |
 | int ferror(FILE *stream)                            | Tests the error indicator for the given stream.              |
-|                                                     |                                                              |
+| int fflush(FILI *stream)                            | Flushes the output buffer of a stream.                       |
 |                                                     |                                                              |
 | FILE *fopen(const char *filename, const char *mode) | Opens the filename pointed to by filename using the given mode. |
 |                                                     |                                                              |
@@ -210,6 +210,28 @@ This function returns a non-zero value when End-of-File indicator associated whi
 ```
 
 
+
+**C library function - fflush()**
+
+**Description**
+
+The C library function int fflush(FILE *stream) flushes the output buffer of a stream.
+
+**Declaration**
+
+Following is the declaration for fflush() function.
+
+```c
+int fflush(FILE *stream)
+```
+
+**Parameters**
+
+stream —This is the pointer to a FILE object that specifies a buffered stream.
+
+Return Value
+
+This function returns a zero value on successs. If an error occurs, EOF is returned and the error indicator is set(i.e. feof).
 
 
 
