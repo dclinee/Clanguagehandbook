@@ -494,10 +494,6 @@ The elements of array can be accessed by programmer with the help of index numbe
 
 
 
-
-
-
-
 ## C Language Advanced
 
 ## C Language Standard Library
