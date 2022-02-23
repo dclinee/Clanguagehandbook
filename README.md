@@ -1,8 +1,6 @@
 # C language Handbook
 This C Beginner's Handbook follows the 80/20 rule. You'll learn 80% of the C programming language in 20% of the time.
 
-
-
 # ![](/home/mrc20/Desktop/Clanguagehandbook/Pictures/c_language_programmer.png)Table of Contents:
 
  
