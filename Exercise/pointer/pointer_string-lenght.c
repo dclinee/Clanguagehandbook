@@ -1,3 +1,4 @@
+// using pointer in string
 #include <stdio.h>
 
 int string_lenght(char *s)
