@@ -1,3 +1,14 @@
+# Compiled source #
+###################
 *.swp
 *.o
-
+*.so
+*.dll
+*.exe
+*.com
+*.class
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
