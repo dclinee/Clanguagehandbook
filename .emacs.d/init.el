@@ -1,3 +1,6 @@
+;;; Init.el -- config for myself
+;;; Commentary
+;;; Code
 (require 'package)
 ;; load packages ourselves
 ;; Press C-h v on the variable for more documentiation
@@ -25,3 +28,19 @@
 ;; To install Magit and set keyboard shortcut to invoke it
 (use-package magit
              :bind (("C-x g" . magit)))
+
+;; Disable the splash screen (to enable it agin, replace the t with 0)
+(setq inhibit-splash-screen t)
+
+;;; Org mode configuration
+;; Enable Org mode
+(require 'org)
+
+
+
+
+
+
+
+(provide init)
+;;; init.el ends here
