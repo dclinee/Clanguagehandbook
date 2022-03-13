@@ -39,7 +39,7 @@ int main(void)
     float *float_pointer_to_x = &float_x;
     char *char_pointer_to_z = &char_z;
 
-    printf("The value at address of int_m = %d\n", *int_m_of_pointer);
+    printf("The value at address of int_m = %d\n", *int_pointer_to_m);
     printf("The value at address of float_x = %f\n", *float_pointer_to_x);
     printf("The value at address of char_z = %c\n", *char_pointer_to_z);
 
