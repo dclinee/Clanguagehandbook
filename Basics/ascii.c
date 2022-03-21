@@ -12,4 +12,5 @@ int main(void)
 	
 	}
 
+        puts("\n");
 }
