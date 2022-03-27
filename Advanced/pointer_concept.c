@@ -9,7 +9,7 @@ int main(void)
   int **q = &p;
 
   printf("a = %d\n", a);
-  printf("&a = %d\n", &a);
+  printf("&a = %p\n", &a);
   printf("p = %p\n", p);
   printf("*p = %d\n", *p);
   printf("&p = %p\n", &p);
@@ -22,7 +22,7 @@ int main(void)
     printf("The p pointe to int variable a.\n");
   else
     printf("Flase.\n");
-  if(&p != &a)
+  if((int *)&p != &a)
     printf("The p is anoter variable, usually called pointer variable.\n");
   else
     printf("The p the same variable as int a.\n");
