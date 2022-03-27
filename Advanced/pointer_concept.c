@@ -8,6 +8,9 @@ int main(void)
   int *p = &a;
   int **q = &p;
 
+  int a_int[3] = {10};
+
+
   printf("a = %d\n", a);
   printf("&a = %p\n", &a);
   printf("p = %p\n", p);
@@ -18,6 +21,9 @@ int main(void)
   printf("*q = %p\n", *q);
   printf("**q = %d\n", **q);
 
+  printf("a[0] = %d\n", a_int[0]);
+  printf("a_int = %d\n", a_int);
+  printf("&a_int = %d\n", &a_int);
   if(p == &a)
     printf("The p pointe to int variable a.\n");
   else
