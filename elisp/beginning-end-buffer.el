@@ -1,4 +1,7 @@
-;; Happy hacking, mrc20 - Emacs ♥ you!
+;;; beginning-end-buffer.el --- emacs lisp
+;;; commentary:
+;;; code:
+
 (defun simplified-beginning-of-buffer ()
   "Move point to the beginning of the buffer;
 leave mark at previous position"
@@ -16,3 +19,5 @@ leave mark at previous position."
   (goto-char (point-max)))
 
 (simplified-end-of-buffer)
+(provide 'beginning-end-buffer)
+;;; beginning-end-buffer.el ends here
