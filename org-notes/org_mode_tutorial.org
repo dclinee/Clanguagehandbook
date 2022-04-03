@@ -14,4 +14,7 @@ common task in org-mode
   you wish to create within your organizational document.
   These can be helpful when planning out projects or assignments.
 * Lists
-  You can create bullets with the - (dash),
+  You can create bullets with the - (dash), numbered bullets or lists with #. (number[dot]).
+  Tabbing multiple times changes the indentation of bullet, but only if there is no text yet.
+  Tabbing multiple levels can get confusing, but if you remember to <TAB> before typing - or
+  #., things tend to work out.
