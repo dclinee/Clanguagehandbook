@@ -1,0 +1,17 @@
+common task in org-mode
+* Headings
+  It's all about headings in org. Headings such as this are created with *(stars).
+  The number of stars defines the depth of the heading. Pressing <TAB> on headings
+  will minimize/maximize them. Pressing tab multiple times in a row on headings with
+  subheadings will maximize each subheading by depth corresponding to the number of
+  times you pressed <TAB>.
+* Subheadings
+  Subheadings can nest with other headings such as this one.
+  This is really convenient for organizing stuff.
+* "TODO"s (C-c C-t)
+  TODO's are created by starting headers with the keyword TODO or DONE.
+  You can also create one with C-c C-t on a header. They are meant to represent tasks
+  you wish to create within your organizational document.
+  These can be helpful when planning out projects or assignments.
+* Lists
+  You can create bullets with the - (dash),
