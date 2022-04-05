@@ -1,0 +1,39 @@
+Org-mode E01S01: Headlines & Outline mode
+
+* Getting yourself orgnaized with org-mode.
+* Concept: Headlines - Outline mode
+** Every headline starts with one or more *
+** Visibility of the headline hierarchy
+** Local visibility cycling with Tab
+   Global visibility cycling with Shift and Tab
+   *Increase or decrease level with Alt and right arrow or Alt and left arrow
+** Move up/down within a level with Alt and Up arrow or Alt and Down arrow
+** Move a head under another top level headline
+   Cursor on the headline and the Ctrl-c and Ctrl-w.
+
+
+
+
+
+* Top Items
+
+** This one should be a level 2 headline under Top Items
+   So put cursor on it, press Ctrl-c and Ctrl-w and move it there
+* Level 1 headline
+
+** Level 2 headline
+
+*** This should be also a level 2 block
+    Indented Text to shift around
+*** Level 3 headline
+    Here we are at level 3
+* Another level 1 headline
+** This is level 2 can move down, but not up
+** This is also a level 2
+* Lets have this as an example
+** Level 2 for the example
+   some text
+** Some more level 2
+   Some more text
+*** Level 3 for demonstration
+    Some text for demonstration

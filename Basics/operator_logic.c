@@ -15,7 +15,6 @@ int main(void)
 	(m = a > b) ||(n = c < d); 
 
 	printf("m = %d\nn = %d\n",m,n);
-	
 //	(m = a > b) && (n = c < d); 
 
 //	printf("m = %d\nn = %d\n",m,n);
