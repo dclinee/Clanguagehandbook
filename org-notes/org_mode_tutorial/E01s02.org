@@ -1,0 +1,67 @@
+Org-mode E01S01: TODO keyword
+Getting yourself orgnaized with org-mode
+Concept: TODO keyword
+Default is TODO and DONE
+Cycling through them with shift -> and shift <-
+More keyword can be define with a line
+#+ SEQ TODO
+Items left of | are TODO item(red)
+Items right of | are TODO item(green)
+Activate line with C-c and C-c
+get a menu of all keyword: C-c and C-t
+
+
+* TODO GTD related things
+  :LOGBOOK:
+  - State "NEXT"       from "DONE"       [2022-04-06 Wed 21:39]
+  - State "DONE"       from "PROJECT"    [2022-04-06 Wed 21:39]
+  - State "PROJECT"    from "DONE"       [2022-04-06 Wed 21:39]
+  - State "DONE"       from "PROJECT"    [2022-04-06 Wed 21:39]
+  - State "PROJECT"    from "DONE"       [2022-04-06 Wed 21:39]
+  - State "DONE"       from "PROJECT"    [2022-04-06 Wed 21:39]
+  - State "PROJECT"    from "DONE"       [2022-04-06 Wed 21:39]
+  - State "DONE"       from "PROJECT"    [2022-04-06 Wed 21:39]
+  - State "PROJECT"    from "DONE"       [2022-04-06 Wed 21:39]
+  - State "DONE"       from "PROJECT"    [2022-04-06 Wed 21:39]
+  - State "PROJECT"    from "DONE"       [2022-04-06 Wed 21:39]
+  - State "DONE"       from "NEXT"       [2022-04-06 Wed 21:39]
+  :END:
+** DONE Weekl review
+   CLOSED: [2022-04-06 Wed 21:42]
+   :LOGBOOK:
+   - State "DONE"       from "NEXT"       [2022-04-06 Wed 21:42]
+   :END:
+
+*Legal obligations
+** DONE Prepare tax declaration
+   CLOSED: [2022-04-06 Wed 21:42]
+   :LOGBOOK:
+   - State "DONE"       from              [2022-04-06 Wed 21:42]
+   :END:
+   - Collect all ddocuments for your tax lawyer
+** Call the tax lawyer after after the ddocuments were sent
+
+* WAITING Maintenance
+
+** Wash the car
+   - Washing from outside and vacuum cleaning int inside
+** Repair bicycle
+*** Deliver of spare part(chain)
+    I have the chain ordered, needs to be delivered
+*** Mount chain
+    You probably need to readjust the gear shifting
+
+* HOLD Family business
+
+** Get a birthday gift for wife
+
+** watch concert of your kid in school
+   - Don't miss that, otherwise kid is disappointed
+
+* DONE House stuff
+  CLOSED: [2022-04-06 Wed 21:43]
+  :LOGBOOK:
+  - State "DONE"       from              [2022-04-06 Wed 21:43]
+  :END:
+** Build a bike port in the garden
+   Budget is $200 for the whole thing
