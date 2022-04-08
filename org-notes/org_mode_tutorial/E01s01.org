@@ -3,11 +3,16 @@ Org-mode E01S01: Headlines & Outline mode
 * Getting yourself orgnaized with org-mode.
 * Concept: Headlines - Outline mode
 ** Every headline starts with one or more *
-** Visibility of the headline hierarchy
+** TODO Visibility of the headline hierarchy
+   SCHEDULED: <2022-04-08 Fri>
 ** Local visibility cycling with Tab
    Global visibility cycling with Shift and Tab
    *Increase or decrease level with Alt and right arrow or Alt and left arrow
-** Move up/down within a level with Alt and Up arrow or Alt and Down arrow
+** DONE Move up/down within a level with Alt and Up arrow or Alt and Down arrow
+   CLOSED: [2022-04-08 Fri 21:04]
+   :LOGBOOK:
+   - State "DONE"       from              [2022-04-08 Fri 21:04]
+   :END:
 ** Move a head under another top level headline
    Cursor on the headline and the Ctrl-c and Ctrl-w.
 
