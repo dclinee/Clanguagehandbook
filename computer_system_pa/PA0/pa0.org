@@ -1,0 +1,11 @@
+PA0 is a guide to GNU/Linux development environment configuration. You
+are guided to install GNU/Linux development environment. All PAs and
+Labs are done in the environment. If you are new to GNU/Linux, and you
+encounter some troubles during the configuration, which are not mentioned
+in this lecture note(such as "No such file or directory"), that is your fault.
+Go back to read this lectur note carefully. Remember, the machine is always right.
+* 对，你没有看错，除了一些重要的信息之外，PA0的实验讲义都是英文！
+  顶尖的学术论文，计算机领域经典书籍都是英文编著
+  “我是中国人，我只看中文”,不符合时代的发展潮流，要站在时代的最前沿，阅读英文材料的能力不可或缺
+  陈道蓄老师的话：坚持一年，你会发现有不同；坚持两年，你会发现大有不同。
+  etone所说，你在专业上的技不如人，迟早有一天会找上来。

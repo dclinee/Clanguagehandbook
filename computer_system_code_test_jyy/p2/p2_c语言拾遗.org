@@ -1,0 +1,24 @@
+#+ TITLE: C语言拾遗（二）工程实践
+#+ AUTHORS: jyy
+本讲概述
+HW1 and Lab1 have released.
+
+* 假设你已经熟练使用各种C语言机制 (~并没有~)
+* 原则上给出需求就能够搞定任何代码 ~(并不是~)
+
+
+* 本次课程
+** 怎么写代码才能从一个大型项目里存活下来？
+   核心原则：编写可读性代码
+   two tests
+
+
+* 问题
+  你写过的最大的代码是什么？有多长？
+  你感觉写代码的感觉怎么样？
+* 一个极端（不可读）的例子
+  IOCCC'll best self documenting program
+  不可读 = 不可维护
+  #+begin_src c
+
+  #+end_src
