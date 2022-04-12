@@ -1,1 +1,1 @@
-MY PROJECT -*- mode: org -*-
+/* emacs compile function */
