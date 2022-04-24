@@ -9,6 +9,7 @@ int main(void) {
       printf("Month %2d has %d days.\n", index +1, *(days + index));
       // use a pointer to identify an individual element of an arrayOne
       // and to obtain its value
+      // equal to array notation days[indes]
     }
   return 0;
 }
