@@ -1,0 +1,16 @@
+* Prototype and definition of function to operate array
+** Prototype
+  int sum(int **ar, int n);
+  int sum(int **, int);
+  int sum(int ar[], int n);
+  int sum(int [], int);
+** Definition
+   int sum(int *ar, int n)
+   {
+   // code goes here
+   }
+
+   int smu(int ar[], int n)
+   {
+   // code goes here
+   }
