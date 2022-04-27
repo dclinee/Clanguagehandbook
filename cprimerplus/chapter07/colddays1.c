@@ -1,4 +1,5 @@
 // colddays.c
+// rewrite colddays.c with if else
 #include <stdio.h>
 int main(void)
 {
@@ -18,7 +19,8 @@ int main(void)
   if(all_days != 0)
     printf("%d days total: %.1f%% were below freezing.\n",
       all_days, 100.0 * (float) cold_days /all_days);
-if(all_days == 0)
-  printf("No data entered!\n");
+  else// if-else need only one testing
+    printf("No data entered!\n");
+
   return 0;
 }
