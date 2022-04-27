@@ -65,3 +65,10 @@ get a menu of all keyword: C-c and C-t
   :END:
 ** Build a bike port in the garden
    Budget is $200 for the whole thing
+
+
+
+ #+begin_src mermaid :file test.png
+ sequenceDiagram
+A-->B: Works!
+ #+end_src
