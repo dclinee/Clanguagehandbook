@@ -1,3 +1,5 @@
+/*Find out (add code to print out) the address of the variable x in foo1,
+  and the variable y in foo2. What do you notice? Can you explain this*/
 // exer_p2.c
 #include <stdio.h>
 void foo1(int x_val)
