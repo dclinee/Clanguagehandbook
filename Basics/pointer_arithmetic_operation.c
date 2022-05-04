@@ -16,7 +16,14 @@ int main()
 
   // all representations prints the base address of the array
   printf("ptr : %p, &a[0] : %p, a : %p, &a : %p\n", ptr, &a[0], a, &a);
+  printf("\n");
 
+  for(i = 0; i < 5; i++)
+    {
+      // accessing array values through pointer
+      // a[i] = *(a + i) + *(ptr + i) = *(i + a) = i[a]
+      printf("[index %d] Value : %d %d %d %d\n", i, *(a + i), *(ptr + i), *(i + a), i[a]);
+}
 
   for(i = 0; i < 5; i++)
     {
