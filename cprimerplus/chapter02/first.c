@@ -2,7 +2,7 @@
 #include <stdio.h>
 int main(void)
 {
-  int num;
+  int num; /* Declare a variable named num*/
   num = 1;
 
   printf("I am a simple ");
