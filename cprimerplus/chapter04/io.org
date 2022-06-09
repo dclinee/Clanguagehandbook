@@ -1,4 +1,15 @@
+input & output -> I/O (standard IO and file IO)
 * 1.输入输出-基本函数介绍,格式字符讲解
+  格式化输入输出是一个重要且复杂的专题，这里只做简单的介绍
+  随着，学习的深入可以了解更多关于输入输出方面的知识。
+  例如：C 标准库、Linux系统编程等。
+** 格式化输入输出函数scanf、printf
+*** printf
+    man 3 printf(standar C library)
+    printf - formatted output conversion
+    int printf(const char * restrict format, ...);
+** 字符输入输出函数：getchar、putchar
+** 字符串输入输出函数：gets、puts
 * 2.输入输出-修饰字符讲解
 * 3.输入输出-变参介绍，缓冲区刷新
 * 4.输入输出-scanf函数讲解
