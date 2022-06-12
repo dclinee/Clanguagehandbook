@@ -4,7 +4,7 @@
 int main(void)
 {
   int n = 0;
-  size_t intsize;
+  size_t intsize; // typedef unsigned int(long) size_t
 
   intsize = sizeof(int);
   printf("n = %d, n has %zd bytes; all ints have %zd bytes.\n",
