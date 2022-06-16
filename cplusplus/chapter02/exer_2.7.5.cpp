@@ -7,10 +7,10 @@ int main()
 {
 
   int celsius;
-  cout << "Enter the celsius: ";
+  cout << "Please enter a Celsius value: ";
   cin >> celsius;
   int fahrenheit = convert(celsius);
-  cout << celsius << " degrees celsius is " << fahrenheit << " degrees Fahrenheit.\n";
+  cout << celsius << " degrees Celsius is " << fahrenheit << " degrees Fahrenheit.\n";
   return 0;
 }
 
