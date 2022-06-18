@@ -5,6 +5,7 @@ int main(void)
 {
   int num = 10;
 
+  //printf("%s! C is cool!\n", "%s! C is cool!\n");
   printf(FORMAT, FORMAT);
   printf("%d\n", ++num);
   printf("%d\n", num++);
