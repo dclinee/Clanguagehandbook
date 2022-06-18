@@ -1,6 +1,6 @@
-// pound.c
+// pound_copy.c
 #include <stdio.h>
-void pound(int n); // function prototype
+void pound( ); // function prototype before ANSI C
 int main(void)
 {
   int times = 5;
@@ -9,7 +9,7 @@ int main(void)
 
   pound(times);
   pound(ch); // pound((int)ch)
-  pound(f); // pound((int)f)
+  pound((int)f); // pound((int)f)
 
   return 0;
 }
