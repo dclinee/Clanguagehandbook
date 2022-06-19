@@ -26,5 +26,17 @@ int main()
   cout << "year = " << year << endl;
   year = 1492;
   cout << "year = " << year << endl;
+  // C++11 initialize way
+  int hanburgers = {24};
+  cout << "hanburgers = " << hanburgers << endl;
+  int emus{7};
+  cout << "emus = " << emus << endl;
+  int rheas = {12};
+  cout << "rheas = " << rheas << endl;
+  int rocs = {};
+  cout << "rocs = " << rocs << endl;
+  int psychics{};
+  cout << "psychics = " << psychics << endl;
+
   return 0;
 }
