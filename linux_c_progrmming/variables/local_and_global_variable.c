@@ -9,6 +9,7 @@ void func(int);
 int main(void)
 {
   // declaration of local variable
+  //int i = 2;
   int i = 3;
   func(i);
   {
