@@ -1,0 +1,25 @@
+The primary purpose of variables is to store data in memory for later use.
+Each variable in C has specific type, which determines the size and layout
+of the variable's memory, the range of values that can be stored within
+that memory, and the set of operaations that can be applied to the variable.
+* Rules for declaring Variables:
+1. A variable can contain alphabets, digits, and underscore.
+2. The use of whitespace is not allowed within the variable name.
+3. We cannot use any reserved word or keyword as a variable name.
+   e.g. int, float, etc.
+4. Variable can't start with a digit. Only Alphabet & underscore can be used.
+* Declaring New Variable in C Language:
+  A declaration statement tells the compiler to create a new variable.
+  It also specifies the data type and memory required for the variable.
+* Initializing Variables in C language
+  A initialization statement tells compiler to assign a value to variable.
+  The assigned value must be compatiable with the data type of the variable.
+* Types of Variables in C Language
+** 1. Local Variable
+   A Variable that is declared inside the function or a block is called local variable.
+   Local Variable must be declared at the start of the block.
+
+** 2. Static Variable
+** 3. Automatic Variable
+** 4. Global Variable
+** External Variable

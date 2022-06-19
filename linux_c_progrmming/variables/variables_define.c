@@ -1,4 +1,4 @@
-// variable_define.c
+// variables_define.c
 #include <stdio.h>
 
 int main(void)
