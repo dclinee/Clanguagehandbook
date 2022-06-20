@@ -4,7 +4,7 @@
 using namespace std;
 int main()
 {
-  using namespace std;
+  //using namespace std;
   int chest = 42;
   int waist = 42;
   int inseam = 42;
