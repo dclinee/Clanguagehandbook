@@ -10,8 +10,8 @@ int main()
   cout << "Let them eat g\u00E2teau\n";
 
   // \U with 16 hexadecimal bits
-  //cout << "Hi, k\U00F6rper\n";
-  //cout << "Let them eat g\U00E2teau\n";
+  //cout << "Hi, k\U0000F6rper\n";
+  //cout << "Let them eat g\U0000E2teau\n";
 
   return 0;
 }
