@@ -9,6 +9,7 @@ int main()
   cout << ch << "\n";
   char ch1 = '\x3f';
   cout << ch1 << "\n";
+  cout << "hi, \x3f there.\n";
 
   return 0;
 }
