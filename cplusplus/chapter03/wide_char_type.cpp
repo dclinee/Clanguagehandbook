@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-  // basics char
+  // basic char
   char aoa = 'p';
   cout << "aoa = " << aoa << endl;
   cout << "CHAR_BIT = " << CHAR_BIT << endl;
