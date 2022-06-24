@@ -1,1 +1,29 @@
-flow contorl
+#+title flow contorl
+#+author dclinee
+#+date 2022-06-24
+
+
+* N-S diagram processing-diagram
+** Tools
+   Dia tool
+** state manchine
+
+* order switch and loop
+** order
+   Order: statements are executed sentence by sentence.
+** switch
+   Swithc: more than one situation occurs.
+** loop
+   Loop: to perform an action repeatedly, if a condition is true.
+
+* keyword
+** Switch Keyword
+   if-else switch-case
+** Loop Keyword
+   while do-while for if-goto
+** Subcontrol Keyword
+   continue break
+
+* simple structure and complicated structure(natural processes)
+** simple structure
+** complicated structure
