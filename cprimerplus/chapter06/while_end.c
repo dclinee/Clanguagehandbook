@@ -3,6 +3,7 @@
 
 int main()
 {
+  // while(expression:entry condition)
 	int index = 1;
 #if 0
 	while(index < 5)
