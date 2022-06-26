@@ -1,3 +1,5 @@
+// cmpflt.c -- compare floating point values
+// with > and < relatational operator
 #include <stdio.h>
 #include <math.h>
 int main(void)
