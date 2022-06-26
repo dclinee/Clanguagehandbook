@@ -1,4 +1,4 @@
-// summing_simplified_version.c -- the sum of the integer values from user input
+// summing.c -- the sum of the integer values from user input
 #include <stdio.h>
 
 int main(void)
@@ -6,13 +6,16 @@ int main(void)
 	long num;
 	long sum = 0L;
 
+	int status;
+
 	printf("Please enter an integer to be summed ");
 	printf("(q to quit): ");
-	while(scanf("%ld", &num) == 1)
+	status = scanf("%ld", &num);
+	while(status == 1)
 	{
 		sum = sum + num;
 		printf("Please enter next integer (q to quit): ");
-		scanf("%ld", &num);
+		status = scanf("%ld", &num);
 	}
 
 	printf("Those integer sum to %ld.\n", sum);
