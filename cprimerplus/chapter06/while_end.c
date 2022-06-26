@@ -1,3 +1,4 @@
+// while_end.c -- terminate whole loop
 #include <stdio.h>
 
 int main()
