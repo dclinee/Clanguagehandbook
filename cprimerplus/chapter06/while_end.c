@@ -15,8 +15,8 @@ int main()
 #endif
 	while(index++ < 5){
 		printf("Now index is:%d \n", index);
-		printf("Good evening!\n");
 	}
+        printf("The loop is finished!\n");
 
 	return 0;
 
