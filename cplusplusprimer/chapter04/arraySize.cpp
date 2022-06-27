@@ -12,13 +12,13 @@ int main()
   for(int i = 0; i < arraySize; i ++)
     {
       array[i] = i + 100;
-      cout << "array[i] = " << array[i] << endl;
+      cout << "array[" << i <<"] = " << array[i] << endl;
     }
 
 #if 0
   for(int i = 0; i < arraySize; i ++)
     {
-      cout << "array[i] = " << array[i] << endl;
+      cout << "array[" << i <<"] = " << array[i] << endl;
     }
 #endif
 
