@@ -29,7 +29,8 @@ array3(void)
       cout << "array[" << i << "] = " << array[i] << endl;
       if(i >= sizeof(array) / sizeof(int))
         {
-          cout << "The element of array[" << i << "] = " << array[i] << " beyond the array size.\n";
+          cout << "The element of array[" << i << "] = " << array[i];
+          cout << " beyond the array size.\n";
         }
     }
 }
@@ -48,7 +49,8 @@ array2(void)
       cout << "array[" << i << "] = " << array[i] << endl;
       if(i >= sizeof(array) / sizeof(int))
         {
-          cout << "The element of array[" << i << "] = " << array[i] << " beyond the array size.\n";
+          cout << "The element of array[" << i << "] = " << array[i];
+          cout << " beyond the array size.\n";
         }
     }
 
@@ -68,7 +70,8 @@ array1(void)
       cout << "array[" << i << "] = " << array[i] << endl;
       if(i >= sizeof(array) / sizeof(int))
         {
-          cout << "The element of array[" << i << "] = " << array[i] << " beyond the array size.\n";
+          cout << "The element of array[" << i << "] = " << array[i];
+          cout << " beyond the array size.\n";
         }
     }
 
