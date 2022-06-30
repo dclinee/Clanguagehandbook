@@ -19,7 +19,7 @@ int main(void)
   return 0;
 }
 
-double blockx(double cleo /*cleo belong function body block*/)
+double blocky(double cleo /*cleo belong function body block*/)
 {
   double patrick = 0;
   for (int i = 0; i < 10; i++)
