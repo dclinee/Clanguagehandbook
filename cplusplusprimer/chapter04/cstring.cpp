@@ -1,6 +1,7 @@
 // cstring.cpp -- string copy and sring and concatenate
 #include <iostream>
-#include <cstring>
+//#include <cstring>
+#include <string.h>
 using namespace std;
 
 int main()
