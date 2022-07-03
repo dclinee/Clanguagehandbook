@@ -12,7 +12,7 @@ int main()
 	memset(dest, '\0', sizeof(dest));
 	strcpy(src, "This is an example of strcpy() function");
 	strcpy(dest, src);
-	len = strlen(dest);	
+	len = strlen(dest);
 
 	printf("Final copied string: %s\n", dest);
 	printf("The length of dest is : %d\n", len);
