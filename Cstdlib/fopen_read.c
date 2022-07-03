@@ -10,9 +10,9 @@ int main()
 	{
 		c = fgetc(fp);
 		if(feof(fp)){
-			break;	
+			break;
 		}
-		printf("%c", c);	
+		printf("%c", c);
 	}
 	fclose(fp);
 
