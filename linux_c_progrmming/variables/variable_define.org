@@ -1,3 +1,4 @@
+MY PROJECT -**- mode: org -**-
 * 存储类型：auot static register extern（说明型）
 auto：默认，自动分配空间，自动回收空间
 register：（建议型）寄存器类型，只能定义局部变量，不能定义全局变量；大小有限制，只能定义32位大小的数据类型，
