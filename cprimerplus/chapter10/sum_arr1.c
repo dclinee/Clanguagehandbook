@@ -1,7 +1,7 @@
 // sum_arr.c -- the sum of the elements of an array
 #include <stdio.h>
 #define SIZE 10
-int sum(int ar[], int n);
+int sum(int *ar, int n);
 int main(void) {
   int marbles[SIZE] = {20, 10, 5, 39, 4, 16, 19, 26, 31, 20};
   long answer;
@@ -13,7 +13,7 @@ int main(void) {
   return 0;
 }
 
-int sum(int ar[], int n)
+int sum(int *ar, int n)
 {// how big the array
   int i;
   int total = 0;
