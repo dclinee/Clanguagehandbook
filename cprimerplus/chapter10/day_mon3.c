@@ -11,5 +11,7 @@ int main(void) {
       // and to obtain its value
       // equal to array notation days[indes]
     }
+
+
   return 0;
 }
