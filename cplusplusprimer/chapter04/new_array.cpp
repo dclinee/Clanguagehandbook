@@ -4,6 +4,7 @@ using namespace std;
 
 int main()
 {
+  // type_name * pointer_name = new type_name [num_elements]
   int *psome = new int [10];     // get a block of 10 ints
   delete [] psome;
   /*
