@@ -18,5 +18,8 @@ int main()
   cout << "pt->good = " << pt->good << endl;
   cout << "pt->bad = " << pt->bad << endl;
 
+  cout << "(*pt).good = " << pt->good << endl;
+  cout << "(*pt).bad = " << pt->bad << endl;
+
   return 0;
 }
