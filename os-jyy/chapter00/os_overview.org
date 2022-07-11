@@ -1,1 +1,5 @@
-#+ TITLE The course of Operating System
+#+title: The course of Operating System
+#+LATEX_COMPILER
+* What is Operating System?
+* Curriculum organization
+* Leading knowledge
