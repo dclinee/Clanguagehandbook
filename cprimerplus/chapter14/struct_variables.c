@@ -35,11 +35,14 @@ int main(void)
     {
       .value = 25.99,
       .author = "James Broadfools",
-      0.95
+      0.95L
     };
   printf("Red_and_black.value = %f\n", Red_and_black.value);
 
   printf("library.value = %f\n", library.value);
+
+  //Renee Vivotte
+  printf("library.author[2] = %c\n", library.author[2]);
 
   return 0;
 }
