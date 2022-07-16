@@ -1,8 +1,6 @@
-// hello.cpp -- hello.cpp
 #include <iostream>
-using namespace std;
-
 int main()
 {
-  cout << "Hello\n";
+    std::cout << "Hello, world!\n";
+    return 0;
 }

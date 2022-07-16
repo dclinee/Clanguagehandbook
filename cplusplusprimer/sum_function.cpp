@@ -1,4 +1,4 @@
-/* sum.cpp */
+/* sum_function.cpp */
 #include <iostream>
 using namespace std;
 auto f = [](int i, int j) { return f(j <= i);};
