@@ -1,4 +1,4 @@
-% Created 2022-07-17 Sun 10:58
+% Created 2022-07-17 Sun 12:59
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -27,4 +27,15 @@
 \tableofcontents
 
 \#+title Dynamic Memory Management
+\section{Linux下进程的划分}
+\label{sec:org3ddd6d9}
+Linux下的应用程序编译后生成的可执行文件（未调入到内存执行前)分为代码段(.text)、数据段(.data)、
+和未初始化数据段(.bss),这三段分别存储指令机器码，初始化过的全局变量和静态局部变量，未初始化过的
+全局变量和静态局部变量；局部变量所占空间和malloc申请的空间不占该文件的空间
+\section{堆和栈的区别}
+\label{sec:org787fb1f}
+\section{动态内存的申请和释放}
+\label{sec:orgb30539e}
+\section{常见的动态内存错误}
+\label{sec:org2438242}
 \end{document}
