@@ -1,4 +1,6 @@
 #+TITLE: Shell Tutorial
+#+author: dclinee
+#+date: 2022-07-18
 * Shell脚本入门
 ** Introduction to Shell
 *** 目标
@@ -20,6 +22,31 @@
     Linux系统是如何操作计算机硬件CPU，内存，磁盘，显示器等？
     答案：使用Linux内核操作计算机硬件。
 ** 编写格式与执行格式
+*** 目标
+**** 掌握Shell脚本编写规范
+**** 掌握Shell脚本文件的3种方式与区别
+**** Shell脚本文件编写方式
+***** Shell脚本后缀名规范
+      Shell脚本文件就是文本文件，后缀名建议使用‘.sh’结尾。
+***** 首行格式规范
+      首行需要设置Shell解析器的类型
+      语法为：#!/bin/bash
+***** 注释格式
+      单行注释，语法：# 注释内容
+      多行注释，语法：
+      :<<!
+      注释内容
+      注释内容
+      !
+*** Shell脚本HelloWord入门案列
+#+BEGIN_SRC sh :shebang "#!/bin/bash"
+  #!/bin/bash
+  echo "hello world!"
+#+END_SRC
+
+#+RESULTS:
+: hello world!
+
 ** 多命令处理
 #+begin_src mermaid :file test.png
   sequenceDiagram
@@ -28,6 +55,16 @@
 
 #+RESULTS:
 [[file:test.png]]
+#+begin_src C
+  #include <stdio.h>
+  int main(void)
+  {
+    printf("Hello world");
+  }
+#+end_src
+
+#+RESULTS:
+: Hello world
 
 
 * Shell变量

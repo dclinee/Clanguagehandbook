@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-07-18 Mon 01:18 -->
+<!-- 2022-07-18 Mon 21:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shell Tutorial</title>
-<meta name="author" content="mrc20" />
+<meta name="author" content="dclinee" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -201,43 +201,48 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org67da48c">1. Shell脚本入门</a>
+<li><a href="#orgbd9fd9f">1. Shell脚本入门</a>
 <ul>
-<li><a href="#org27790e4">1.1. Introduction to Shell</a>
+<li><a href="#org0a7fedd">1.1. Introduction to Shell</a>
 <ul>
-<li><a href="#org809e070">1.1.1. 目标</a></li>
-<li><a href="#org0d85d3e">1.1.2. 疑问</a></li>
+<li><a href="#org37868ba">1.1.1. 目标</a></li>
+<li><a href="#orgee9e7bf">1.1.2. 疑问</a></li>
 </ul>
 </li>
-<li><a href="#org3434fa8">1.2. 编写格式与执行格式</a></li>
-<li><a href="#orga0c39dd">1.3. 多命令处理</a></li>
+<li><a href="#org5d63255">1.2. 编写格式与执行格式</a>
+<ul>
+<li><a href="#org1c50bc6">1.2.1. 目标</a></li>
+<li><a href="#orgb6537b3">1.2.2. Shell脚本HelloWord入门案列</a></li>
 </ul>
 </li>
-<li><a href="#org469f4f6">2. Shell变量</a></li>
-<li><a href="#org8e9656b">3. Shell内置命令</a></li>
-<li><a href="#orgb11cd9f">4. Shell运算符与执行运算命令</a></li>
-<li><a href="#orgaa03381">5. Shell流程控制语句</a></li>
-<li><a href="#orgc8ad239">6. Shell函数</a></li>
-<li><a href="#orgccf6556">7. Shell重定向</a></li>
-<li><a href="#orgf2fe623">8. Shell工具(cut sed awk sort)</a></li>
-<li><a href="#org260192f">9. 面试题</a></li>
+<li><a href="#org9740329">1.3. 多命令处理</a></li>
+</ul>
+</li>
+<li><a href="#org5581e5e">2. Shell变量</a></li>
+<li><a href="#orgbcdd138">3. Shell内置命令</a></li>
+<li><a href="#org0c72cf8">4. Shell运算符与执行运算命令</a></li>
+<li><a href="#orge768076">5. Shell流程控制语句</a></li>
+<li><a href="#org069a49f">6. Shell函数</a></li>
+<li><a href="#org6386325">7. Shell重定向</a></li>
+<li><a href="#orga0fc307">8. Shell工具(cut sed awk sort)</a></li>
+<li><a href="#org8745b88">9. 面试题</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org67da48c" class="outline-2">
-<h2 id="org67da48c"><span class="section-number-2">1.</span> Shell脚本入门</h2>
+<div id="outline-container-orgbd9fd9f" class="outline-2">
+<h2 id="orgbd9fd9f"><span class="section-number-2">1.</span> Shell脚本入门</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org27790e4" class="outline-3">
-<h3 id="org27790e4"><span class="section-number-3">1.1.</span> Introduction to Shell</h3>
+<div id="outline-container-org0a7fedd" class="outline-3">
+<h3 id="org0a7fedd"><span class="section-number-3">1.1.</span> Introduction to Shell</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org809e070" class="outline-4">
-<h4 id="org809e070"><span class="section-number-4">1.1.1.</span> 目标</h4>
+<div id="outline-container-org37868ba" class="outline-4">
+<h4 id="org37868ba"><span class="section-number-4">1.1.1.</span> 目标</h4>
 <div class="outline-text-4" id="text-1-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="orgb6d08cc"></a>理解Shell是什么<br />
+<li><a id="orge604153"></a>理解Shell是什么<br />
 <div class="outline-text-5" id="text-1-1-1-1">
 <p>
 通过编写Shell命令发送给Linux内核去执行操作计算机硬件。
@@ -247,23 +252,23 @@ Shell是一种程序设计语言，Shell包含有变量，函数，逻辑控制�
 </p>
 </div>
 </li>
-<li><a id="org203c131"></a>理解Shell脚本是什么<br />
+<li><a id="org41a49aa"></a>理解Shell脚本是什么<br />
 <div class="outline-text-5" id="text-1-1-1-2">
 <p>
 Shell脚本也叫Shell程序，是通过Shell命令或程序编程语言编写的Shell文本文件。
 </p>
 </div>
 </li>
-<li><a id="orgd75d7e2"></a>理解为什么学习Shell脚本(Shell脚本程序的作用)<br />
+<li><a id="org3629cea"></a>理解为什么学习Shell脚本(Shell脚本程序的作用)<br />
 <div class="outline-text-5" id="text-1-1-1-3">
 <p>
 通过Shell命令和编程语言的学习，提高对Linux系统管理和工作的效率。
 </p>
 </div>
 </li>
-<li><a id="org70ab57f"></a>Linux系统默认的Shell解释器<br />
+<li><a id="org8a0e7f1"></a>Linux系统默认的Shell解释器<br />
 <ol class="org-ol">
-<li><a id="org6c23a4a"></a>Shell的运行过程<br />
+<li><a id="orge9b6193"></a>Shell的运行过程<br />
 <div class="outline-text-6" id="text-1-1-1-4-1">
 <p>
 当用户输入某些命令给操作系统的时候，实际上是把命令告诉Shell，经过Shell解析处理后，
@@ -271,13 +276,13 @@ Shell脚本也叫Shell程序，是通过Shell命令或程序编程语言编写�
 </p>
 </div>
 </li>
-<li><a id="org680bb9f"></a>Shell解析器<br /></li>
+<li><a id="orgf0f13d2"></a>Shell解析器<br /></li>
 </ol>
 </li>
 </ol>
 </div>
-<div id="outline-container-org0d85d3e" class="outline-4">
-<h4 id="org0d85d3e"><span class="section-number-4">1.1.2.</span> 疑问</h4>
+<div id="outline-container-orgee9e7bf" class="outline-4">
+<h4 id="orgee9e7bf"><span class="section-number-4">1.1.2.</span> 疑问</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 Linux系统是如何操作计算机硬件CPU，内存，磁盘，显示器等？
@@ -286,50 +291,112 @@ Linux系统是如何操作计算机硬件CPU，内存，磁盘，显示器等？
 </div>
 </div>
 </div>
-<div id="outline-container-org3434fa8" class="outline-3">
-<h3 id="org3434fa8"><span class="section-number-3">1.2.</span> 编写格式与执行格式</h3>
+<div id="outline-container-org5d63255" class="outline-3">
+<h3 id="org5d63255"><span class="section-number-3">1.2.</span> 编写格式与执行格式</h3>
+<div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-orga0c39dd" class="outline-3">
-<h3 id="orga0c39dd"><span class="section-number-3">1.3.</span> 多命令处理</h3>
+<div id="outline-container-org1c50bc6" class="outline-4">
+<h4 id="org1c50bc6"><span class="section-number-4">1.2.1.</span> 目标</h4>
+<div class="outline-text-4" id="text-1-2-1">
+</div>
+<ol class="org-ol">
+<li><a id="org87a87eb"></a>掌握Shell脚本编写规范<br /></li>
+<li><a id="org0ad30f6"></a>掌握Shell脚本文件的3种方式与区别<br /></li>
+<li><a id="orgddf7c48"></a>Shell脚本文件编写方式<br />
+<ol class="org-ol">
+<li><a id="orgc7b6adf"></a>Shell脚本后缀名规范<br />
+<div class="outline-text-6" id="text-1-2-1-3-1">
+<p>
+Shell脚本文件就是文本文件，后缀名建议使用‘.sh’结尾。
+</p>
+</div>
+</li>
+<li><a id="orgaabe31d"></a>首行格式规范<br />
+<div class="outline-text-6" id="text-1-2-1-3-2">
+<p>
+首行需要设置Shell解析器的类型
+语法为：#!/bin/bash
+</p>
+</div>
+</li>
+<li><a id="org2aaa520"></a>注释格式<br />
+<div class="outline-text-6" id="text-1-2-1-3-3">
+<p>
+单行注释，语法：# 注释内容
+多行注释，语法：
+:&lt;&lt;!
+注释内容
+注释内容
+!
+</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgb6537b3" class="outline-4">
+<h4 id="orgb6537b3"><span class="section-number-4">1.2.2.</span> Shell脚本HelloWord入门案列</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #969896; font-style: italic;">#</span><span style="color: #969896; font-style: italic;">!/bin/</span><span style="color: #b9ca4a;">bash</span>
+<span style="color: #c397d8;">echo</span> <span style="color: #70c0b1;">"hello world!"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9740329" class="outline-3">
+<h3 id="org9740329"><span class="section-number-3">1.3.</span> 多命令处理</h3>
 <div class="outline-text-3" id="text-1-3">
 
-<div id="org4875304" class="figure">
+<div id="org1dd0907" class="figure">
 <p><img src="test.png" alt="test.png" />
 </p>
 </div>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #c397d8;">#include</span> <span style="color: #eaeaea;">&lt;</span><span style="color: #70c0b1;">stdio.h</span><span style="color: #eaeaea;">&gt;</span>
+<span style="color: #7aa6da;">int</span> <span style="color: #e78c45;">main</span><span style="color: #eaeaea;">(</span><span style="color: #7aa6da;">void</span><span style="color: #eaeaea;">)</span>
+<span style="color: #eaeaea;">{</span>
+  printf<span style="color: #70c0b1;">(</span><span style="color: #70c0b1;">"Hello world"</span><span style="color: #70c0b1;">)</span>;
+<span style="color: #eaeaea;">}</span>
+</pre>
+</div>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-org469f4f6" class="outline-2">
-<h2 id="org469f4f6"><span class="section-number-2">2.</span> Shell变量</h2>
+<div id="outline-container-org5581e5e" class="outline-2">
+<h2 id="org5581e5e"><span class="section-number-2">2.</span> Shell变量</h2>
 </div>
-<div id="outline-container-org8e9656b" class="outline-2">
-<h2 id="org8e9656b"><span class="section-number-2">3.</span> Shell内置命令</h2>
+<div id="outline-container-orgbcdd138" class="outline-2">
+<h2 id="orgbcdd138"><span class="section-number-2">3.</span> Shell内置命令</h2>
 </div>
-<div id="outline-container-orgb11cd9f" class="outline-2">
-<h2 id="orgb11cd9f"><span class="section-number-2">4.</span> Shell运算符与执行运算命令</h2>
+<div id="outline-container-org0c72cf8" class="outline-2">
+<h2 id="org0c72cf8"><span class="section-number-2">4.</span> Shell运算符与执行运算命令</h2>
 </div>
-<div id="outline-container-orgaa03381" class="outline-2">
-<h2 id="orgaa03381"><span class="section-number-2">5.</span> Shell流程控制语句</h2>
+<div id="outline-container-orge768076" class="outline-2">
+<h2 id="orge768076"><span class="section-number-2">5.</span> Shell流程控制语句</h2>
 </div>
-<div id="outline-container-orgc8ad239" class="outline-2">
-<h2 id="orgc8ad239"><span class="section-number-2">6.</span> Shell函数</h2>
+<div id="outline-container-org069a49f" class="outline-2">
+<h2 id="org069a49f"><span class="section-number-2">6.</span> Shell函数</h2>
 </div>
-<div id="outline-container-orgccf6556" class="outline-2">
-<h2 id="orgccf6556"><span class="section-number-2">7.</span> Shell重定向</h2>
+<div id="outline-container-org6386325" class="outline-2">
+<h2 id="org6386325"><span class="section-number-2">7.</span> Shell重定向</h2>
 </div>
-<div id="outline-container-orgf2fe623" class="outline-2">
-<h2 id="orgf2fe623"><span class="section-number-2">8.</span> Shell工具(cut sed awk sort)</h2>
+<div id="outline-container-orga0fc307" class="outline-2">
+<h2 id="orga0fc307"><span class="section-number-2">8.</span> Shell工具(cut sed awk sort)</h2>
 </div>
-<div id="outline-container-org260192f" class="outline-2">
-<h2 id="org260192f"><span class="section-number-2">9.</span> 面试题</h2>
+<div id="outline-container-org8745b88" class="outline-2">
+<h2 id="org8745b88"><span class="section-number-2">9.</span> 面试题</h2>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: mrc20</p>
-<p class="date">Created: 2022-07-18 Mon 01:18</p>
+<p class="date">Date: 2022-07-18</p>
+<p class="author">Author: dclinee</p>
+<p class="date">Created: 2022-07-18 Mon 21:21</p>
 </div>
 </body>
 </html>
