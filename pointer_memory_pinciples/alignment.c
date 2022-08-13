@@ -14,14 +14,14 @@ struct test_one
   short c;
 };
 
-#pragma pack(2)
+#pragma pack(2) // specifie the compiler 2-byte alignment
 struct test_two
 {
   short a;
   int b;
   char c;
 };
-#pragma pack()
+#pragma pack() // restore default alignment
 
 int main(void)
 {
