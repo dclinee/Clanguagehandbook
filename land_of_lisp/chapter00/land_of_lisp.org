@@ -1,1 +1,4 @@
-#+title Land of Lisp
+#+title: Land of Lisp
+#+author: Dclinee
+#+date: 2022-08-21
+Learn to program in lisp, one game at a time!
