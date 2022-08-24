@@ -21,3 +21,15 @@
 
 #+RESULTS:
 : This is a print message.
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+  {
+    printf("Hello, world!");
+    return 0;
+  }
+#+END_SRC
+
+#+RESULTS:
+| Hello | world! |
