@@ -31,6 +31,8 @@
 
 ;; Disable the splash screen (to enable it agin, replace the t with 0)
 (setq inhibit-splash-screen t)
+;; Make ibuffer default
+(defalias 'list-buffers 'ibuffer)
 
 ;;; Org mode configuration
 ;; Enable Org mode
