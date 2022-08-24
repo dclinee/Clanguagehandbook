@@ -1,0 +1,23 @@
+#+BEGIN_SRC emacs-lisp
+  ;; defun function without arguments
+  (defun ADD ()
+    "add print message."
+    (interactive "add func")
+    (message "This is a print message."))
+  (ADD)
+#+END_SRC
+
+#+RESULTS:
+: This is a print message.
+
+#+BEGIN_SRC emacs-lisp
+  ;;defun function sub test
+  (defun SUB ()
+       "sub print test."
+       (interactive "sub func: ")
+       (message "This is a print message."))
+  (SUB)
+#+END_SRC
+
+#+RESULTS:
+: This is a print message.
