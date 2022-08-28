@@ -1,12 +1,20 @@
-;; This buffer is for text that is not saved, and for Lisp evaluation.
-;; To create a file, visit it with C-x C-f and enter text in its buffer.
+;;; package exercise.el --- summary
+;;; commentary
+;;; Code:
+(defun simplified-end-of-buffer ()
+  "Move point to the end of the buffer."
+  (interactive)
+  (push-mark)
+  (goto-char (point-max)))
+
+(defun simplified-beginning-of-buffer ()
+  "Move point to the beginning of the buffer."
+  (interactive)
+  (push-mark)
+  (goto-char (point-min)))
 
 (list-buffers)
 (buffer-name)
-;; This buffer is for text that is not saved, and for Lisp evaluation.
-;; To create a file, visit it with C-x C-f and enter text in its buffer.
-
-(list-buffers)
 (buffer-name)
 (switch-to-buffer (other-buffer))
 (progn (print "first.")
@@ -20,7 +28,6 @@
   (print "third."))
 
 (buffer-name)
-(buffer-file-name)
 (buffer-size)
 (point)
 (buffer-size)
