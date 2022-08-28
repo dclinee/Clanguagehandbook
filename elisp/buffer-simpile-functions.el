@@ -32,3 +32,9 @@
 (point)
 (buffer-size)
 (point)
+(defun my-mark-whole-buffer ()
+  "Define a makrk whole buffer function."
+  (interactive)
+  (push-mark (point))
+  (push-mark (point-max) nil t)
+  (goto-char (point-min)))
