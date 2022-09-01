@@ -22,3 +22,8 @@
 (lambda (x) (+ x x))
 
 (lambda (x) (+ x x) 17)
+
+(setq bdf-directory-list
+      (mapcar (lambda (d)
+                (concat "/usr/local/src/intlfonts-1.2/" d))
+              '("Asian" "Chinese")))
