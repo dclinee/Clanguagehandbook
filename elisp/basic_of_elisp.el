@@ -80,5 +80,12 @@ bar
 (square-number-p -1)
 (square-number-p 25)
 
-	
-      
+(defun wrap-markup-region ()
+  "Wrap markup region"
+  (interactive)
+  (let ((p1 (region-beginning))
+        (p2 (region-end)))
+    (goto-char p2)
+    (insert "</b>")
+    (goto-char p1)
+    (insert "<b>")))
