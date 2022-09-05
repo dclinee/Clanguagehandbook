@@ -57,3 +57,6 @@ void init_no_array(void)
     }
 
 }
+
+
+
