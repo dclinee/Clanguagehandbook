@@ -1,4 +1,4 @@
-/* // ansi.c expert programming in c */
+/* ansi.c expert programming in c */
 #include <stdio.h>
 foo(const char **p){}
 int main(int argc, char **argv)
