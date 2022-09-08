@@ -1,5 +1,5 @@
 // printing the emements of the 2-D array using the pointer concept
-
+#include <stdlib.h>
 #include <stdio.h>
 int main()
 {
@@ -32,5 +32,5 @@ int main()
 }
       printf("\n");
 }
-  return 0;
+  exit(0);
 }
