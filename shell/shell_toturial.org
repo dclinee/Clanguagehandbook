@@ -53,8 +53,7 @@
   A-->B: Works!
 #+end_src
 
-#+RESULTS:
-[[file:test.png]]
+
 #+begin_src C
   #include <stdio.h>
   int main(void)
@@ -63,8 +62,8 @@
   }
 #+end_src
 
-#+RESULTS:
-: Hello world
+
+
 
 
 * Shell变量
