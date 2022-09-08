@@ -48,11 +48,24 @@
 : hello world!
 
 ** 多命令处理
-#+begin_src mermaid :file test.png
+#+begin_src mermaid :file file.png
   sequenceDiagram
   A-->B: Works!
 #+end_src
 
+#+RESULTS:
+[[file:file.png]]
+
+#+BEGIN_SRC mermaid :file flowchat.png
+  graph TD;
+  A-->B;
+  A-->C;
+  B-->D;
+  C-->D;
+#+END_SRC
+
+#+RESULTS:
+[[file:flowchat.png]]
 
 #+begin_src C
   #include <stdio.h>
