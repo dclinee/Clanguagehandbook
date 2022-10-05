@@ -10,6 +10,6 @@ int main()
     {
       cout << "C++ knows loop.\n";
     }
-      cout << "C++ knows when to stop.\n";
+  cout << "C++ knows when to stop.\n";
   return 0;
 }
