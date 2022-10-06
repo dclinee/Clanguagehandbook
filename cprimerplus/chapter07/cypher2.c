@@ -5,13 +5,12 @@ int main(void)
 {
   char ch;
 
-  while ((ch = getchar() != '\n'))
+  while ((ch = getchar()) != '\n')
     {
       if(isalpha(ch))
         putchar(ch + 1);
       else
         putchar(ch);
-      ch = getchar();
     }
   putchar(ch);
 
