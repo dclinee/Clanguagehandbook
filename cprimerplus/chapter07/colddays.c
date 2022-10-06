@@ -21,5 +21,5 @@ int main(void)
       all_days, 100.0 * (float) cold_days /all_days);
 if(all_days == 0)
   printf("No data entered!\n");
-  return 0;
+ exit(0);
 }
