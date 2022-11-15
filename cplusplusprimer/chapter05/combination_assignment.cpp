@@ -17,5 +17,6 @@ int main()
   pa += 2;
   cout << "pa[2] = " << pa[2] << endl;
 
+
   return 0;
 }
