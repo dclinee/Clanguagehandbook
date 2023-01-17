@@ -1,7 +1,5 @@
 #include <stdio.h>
-
 #define SIZE 3
-
 int main()
 {
 	// int size = 3;
