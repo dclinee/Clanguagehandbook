@@ -27,3 +27,8 @@
 (defun foo2 (n)
   (interactive "^p")
   (forward-word (* 2 n)))
+;; To use interactive "p" option in function
+(defun multiple-by-seven (number)
+  "Multiple NUMBER by seven."
+  (interactive "p")
+  (message "The result is %d." (* number 7)))
