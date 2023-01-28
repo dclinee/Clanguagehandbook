@@ -1,0 +1,28 @@
+#+title: 50-point summary of Emacs Lisp
+#+author: dclinee
+#+date: <2023-01-28 Sat>
+* 1.Basics
+** A. "set" assigns a value to a symbol
+#+begin_src emacs-lisp
+  (set 'fname "Dclinee")
+#+end_src
+#+RESULTS:
+: Dclinee
+Since quoting the symbol name is so common a second assignment opetator
+was created, "setq".
+** B. "setq" sets a value of a variable
+#+begin_src emacs-lisp
+  (setq fname "dclinee")
+#+end_src
+
+#+RESULTS:
+: dclinee
+but can take multiple arguments
+#+begin_src emacs-lisp
+    (setq first_name "denng"
+          secod_name "changlin")
+#+end_src
+
+#+RESULTS:
+: changlin
+It returns the last value set.
