@@ -17,3 +17,13 @@
   (interactive "sWho do you want to say hello to? \nnHow many times? ")
   (dotimes (i num)
     (insert (format "Hello %s!\n" someone))))
+;; foo1 function takes no argument
+(defun foo1 ()
+  (interactive)
+  (forward-word 2) ;; just moves forward two words
+  )
+
+;;
+(defun foo2 (n)
+  (interactive "^p")
+  (forward-word (* 2 n)))
