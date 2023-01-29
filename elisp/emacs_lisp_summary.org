@@ -27,4 +27,12 @@ but can take multiple arguments
 : changlin
 It returns the last value set.
 * 2. ";" is the comment character
-** ";" comment in
+** ";" I'm a comment
+#+begin_src emacs-lisp
+  ; I'm a comment
+  (setq my_name "dclinee") ; another comment too
+#+end_src
+** ";;" this is a comment
+;; By the Emacs convention, comment on a line by itself starts with 2 semicolons
+** ";;;" HEADER COMMENT
+;; By the Emacs convention, comment starting with 3 semicolons is header comment.
