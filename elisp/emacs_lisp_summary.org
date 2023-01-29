@@ -26,3 +26,5 @@ but can take multiple arguments
 #+RESULTS:
 : changlin
 It returns the last value set.
+* 2. ";" is the comment character
+** ";" comment in
