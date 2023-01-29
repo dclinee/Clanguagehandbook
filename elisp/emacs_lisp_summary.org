@@ -27,6 +27,9 @@ but can take multiple arguments
 : changlin
 It returns the last value set.
 * 2. ";" is the comment character
+A comment is text that ignored by Emacs Lisp.
+Usually used to annotate the code, or documentation, or for copyright info.
+Comment syntax starts with one or more than one semicolons to end of line.
 ** ";" I'm a comment
 #+begin_src emacs-lisp
   ; I'm a comment
@@ -36,3 +39,120 @@ It returns the last value set.
 ;; By the Emacs convention, comment on a line by itself starts with 2 semicolons
 ** ";;;" HEADER COMMENT
 ;; By the Emacs convention, comment starting with 3 semicolons is header comment.
+* 3. List operator
+A List is a sequence of zero or more lisp expressions enclosed in  parents.
+** car function
+Return the first element of the List
+#+begin_src  emacs-lisp
+  (car '(a b c d e))
+#+end_src
+#+RESULTS:
+: a
+** cdr function
+Return the list without the first element
+#+begin_src emacs-lisp
+  (cdr '(a b c d e))
+#+end_src
+#+RESULTS:
+| b | c | d | e |
+** list function
+Makes a list from its arguments
+#+begin_src emacs-lisp
+  (list 'x 'A 'xf45 '(a b))
+#+end_src
+
+#+RESULTS:
+| x | A | xf45 | (a b) |
+** cons function
+Prepends its first argument to is second
+#+begin_src emacs-lisp
+  (cons '(a b) '(c d e))
+#+end_src
+
+#+RESULTS:
+| (a b) | c | d | e |
+** append function
+Strip the outer parens from its arguments and then munges all of them into a single list.
+#+begin_src emacs-lisp
+  (append '(a b) '(c d (e)))
+#+end_src
+
+#+RESULTS:
+| a | b | c | d | (e) |
+** reverse function
+Reverses a list's top level element
+#+begin_src emacs-lisp
+  (setq x '(a b c d e))
+  (reverse x)
+#+end_src
+
+#+RESULTS:
+| e | d | c | b | a |
+** length function
+Return number of top level list elements.
+#+begin_src emacs-lisp
+  (length '(a b c d (e)))
+#+end_src
+
+#+RESULTS:
+: 5
+** nthcdr function
+Return the nth cdr.
+#+begin_src emacs-lisp
+  (nthcdr 2 '(a b c d e))
+#+end_src
+
+#+RESULTS:
+| c | d | e |
+** nth function
+Return nth element of a list.
+#+begin_src emacs-lisp
+  (nth 2 '(a b c d e))
+#+end_src
+
+#+RESULTS:
+: c
+** mapcar function
+Given a function and a list, it calls the function on each element of list
+and return a list.
+#+begin_src emacs-lisp
+  (mapcar 'length '((a) (a b) (a b c ) (a b c d ) (a b c d e)))
+#+end_src
+
+#+RESULTS:
+| 1 | 2 | 3 | 4 | 5 |
+** apply function
+Apply a functioin on list.
+#+begin_src emacs-lisp
+  (apply 'max '(2 3 1 5 9))
+#+end_src
+
+#+RESULTS:
+: 9
+** setcar function
+Sets the value of the car in the cons cell.
+#+begin_src emacs-lisp
+  (setq a (cons 'x 'y))
+  (setcar a 'w)
+#+end_src
+
+#+RESULTS:
+: w
+** setcdr function
+Sets the value of the cdr in the cons cell.
+#+begin_src emacs-lisp
+  (setq b (cons 'x 'y))
+  (setcdr b 'w)
+  (b)
+#+end_src
+
+#+RESULTS:
+: w
+** sort function
+Sorts a list.
+#+begin_src emacs-lisp
+  (sort '(2 3 1 56 34 56 98) '<)
+#+end_src
+
+#+RESULTS:
+| 1 | 2 | 3 | 34 | 56 | 56 | 98 |
