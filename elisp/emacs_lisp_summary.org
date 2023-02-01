@@ -206,3 +206,65 @@ Set nth char.
 
 #+RESULTS:
 :  go
+
+* 5. List background
+Lists are composed of smallers units called 'cons cell'.
+A cons cell has two parts, a 'car' and a 'cdr'.
+Lists are made of having data in the 'car' part and the 'cdr' part pointing another
+cons cell. The last cdr of a proper list is nil.
+
+* 6. Data Types
+** A. Integer
+** B. Floating Point
+** C. Character
+** D. Symbol
+** E. Sequences
+*** a. List
+*** b. Array
+** F. String
+** G. vector
+* 7. Arithmetic
+** + function
+Addition function.
+#+begin_src emacs-lisp
+  (+ 1 2 3 4 5)
+#+end_src
+
+#+RESULTS:
+: 15
+
+** - function
+Subtraction function.
+#+begin_src emacs-lisp
+  (- 15 1 2 3 4 5)
+#+end_src
+
+#+RESULTS:
+: 0
+
+** * function
+Multiplication function.
+#+begin_src emacs-lisp
+  (* 1 2 3 4 5)
+#+end_src
+
+#+RESULTS:
+: 120
+
+** / function
+Division function.
+#+begin_src emacs-lisp
+  (/ 120 1 2 3 4 5)
+#+end_src
+
+#+RESULTS:
+: 1
+
+** % function
+Modulo (remainder) function.
+#+begin_src emacs-lisp
+  (% 5 2)
+#+end_src
+
+#+RESULTS:
+: 1
