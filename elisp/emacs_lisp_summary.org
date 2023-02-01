@@ -156,3 +156,53 @@ Sorts a list.
 
 #+RESULTS:
 | 1 | 2 | 3 | 34 | 56 | 56 | 98 |
+
+* 4. String functions
+** (string = s1 s2) function
+Compares two strings for eauality.
+#+begin_src emacs-lisp
+  (string= "abc" "abc")
+#+end_src
+
+#+RESULTS:
+: t
+** (stringp x)
+Testing if arg is a string.
+#+begin_src emacs-lisp
+  (stringp "abc123")
+#+end_src
+
+#+RESULTS:
+: t
+** (concat a b [c...]) function
+Concats its args with together.
+#+begin_src emacs-lisp
+  (concat "I " "am " "a emacser.")
+#+end_src
+
+#+RESULTS:
+: I am a emacser.
+** (aref sepx num) function
+Return the nth char(0 based).
+#+begin_src emacs-lisp
+  (aref "abcdef" 2)
+#+end_src
+
+#+RESULTS:
+: 99
+*** (aset sepx num ch) function
+Set nth char.
+#+begin_src emacs-lisp
+  (aset "run" 1 ?A)
+#+end_src
+
+#+RESULTS:
+: 65
+
+** (substring sepx from [to]) function
+#+begin_src emacs-lisp
+  (substring "A good book to introduce Elisp." 1 4)
+#+end_src
+
+#+RESULTS:
+:  go
