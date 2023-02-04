@@ -268,3 +268,28 @@ Modulo (remainder) function.
 
 #+RESULTS:
 : 1
+* 8. Logical functions (and, or, not, eq)
+** or function
+Evaluates args in order and teturns the first true one.
+#+begin_src emacs-lisp
+  (or nil 4 5)
+#+end_src
+
+#+RESULTS:
+: 4
+** = function
+Tests if two args are equal.
+#+begin_src emacs-lisp
+  (= 1 1)
+#+end_src
+
+#+RESULTS:
+: t
+** /= function
+Tests if the two numbers arr not equal.
+#+begin_src emacs-lisp
+  (/= 1 2)
+#+end_src
+
+#+RESULTS:
+: t
