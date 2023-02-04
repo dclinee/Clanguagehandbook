@@ -1,0 +1,33 @@
+#+title: Union in C
+#+author: dclinee
+#+data: <2023-02-04 Sat>
+* The topic of Union in C
+Like Structures, union is a user defined data type.
+In union, all members share the smae memory location.
+** Definition of Union in C
+For example in the following C program, both x and y share the same location.
+If we change x, we can see the changes being reflected in y.
+#+begin_src  C
+#include <stdio.h>
+union test{int x, y;};
+int main(void)
+{
+union test t;
+
+t.x = 2;
+printf("After making x = 2:\n x = %d\n y = %d\n", t.x, t.y);
+
+t.y = 100;
+printf("After making y = 100:\n x = %d\n y = %d\n", t.x, t.y);
+
+return 0;
+}
+#+end_src
+
+#+RESULTS:
+| After | making |   x | = |   2: |
+| x     | =      |   2 |   |      |
+| y     | =      |   2 |   |      |
+| After | making |   y | = | 100: |
+| x     | =      | 100 |   |      |
+| y     | =      | 100 |   |      |
