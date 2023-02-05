@@ -1,0 +1,12 @@
+#+title: Macros in C
+#+author: dclinee
+#+date: <2023-02-05 Sun>
+* Examples of Macros in C
+A macro in C programming language is a block or set of satements of program code that can
+be replaced by macro #define directive.
+** 1. Object-Like Macro
+This macro can be a pointer variable or identifier or variable defined using #define and
+it is replaced by its value. This is mainly used when numeric constants are required.
+#+begin_src C
+  #define MAC 100
+#+end_src
