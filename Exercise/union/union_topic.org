@@ -31,3 +31,48 @@ return 0;
 | After | making |   y | = | 100: |
 | x     | =      | 100 |   |      |
 | y     | =      | 100 |   |      |
+** How is the size of union decided by compiler?
+Size of a union is taken according the size of largest member in union.
+#+begin_src C
+    #include <stdio.h>
+  union test1 {int x; int y;} Test1;
+  union test2 {int x; char y;} Test2;
+  union test3 {int x[10]; char y;} Test3;
+  int main(void)
+       {
+         printf("sizeof(Test1) = %lu\n", sizeof(Test1));
+         printf("sizeof(Test2) = %lu\n", sizeof(Test2));
+         printf("sizeof(Test2) = %lu\n", sizeof(Test3));
+
+         return 0;
+       }
+#+end_src
+
+#+RESULTS:
+| sizeof(Test1) | = |  4 |
+| sizeof(Test2) | = |  4 |
+| sizeof(Test2) | = | 40 |
+** Pointers to unions?
+Like structures, we can have pointers to unions and can access members using
+the arrow operator (->).
+The following example demonstrates the same.
+
+#+begin_src C
+    #include <stdio.h>
+  union test {int x; char y;};
+
+  int main(void)
+    {
+      union test p1;
+      p1.x = 6;
+      p1.y = 'A';
+
+      union test *ptr = &p1;
+      printf("p1.x = %d, p1.y = %c\n", ptr->x, ptr->y);
+
+      return 0;
+    }
+#+end_src
+
+#+RESULTS:
+| p1.x = 65 | p1.y = A |
