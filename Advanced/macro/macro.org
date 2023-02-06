@@ -64,3 +64,21 @@ You should note that when the argument passed to the function-like macro where i
 
 *** Another example of above example(Example two)
 The macro can also be written in multiple lines starting the statements with '\' and no need to end '\'.
+#+begin_src C
+  #include <stdio.h>
+  #define MACRO(n, limit) while (n < limit) \
+      { \
+      printf("dclinee "); \
+      n++; \
+      }
+  int main(void)
+    {
+      int n = 0;
+      MACRO(n, 5);
+
+      return 0;
+    }
+#+end_src
+
+#+RESULTS:
+: dclinee dclinee dclinee dclinee dclinee
