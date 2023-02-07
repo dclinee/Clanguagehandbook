@@ -7,6 +7,7 @@ step 4:After that, multiply the values of variable A and B and store into C.
 step 5:Check whether C == N, then the number is a Magic Number. Else, the Number is not a Magic Number.*/
 
 #include <stdio.h>
+#include <stdlib.h>
 //#include <conio.h>
 
 int main()
