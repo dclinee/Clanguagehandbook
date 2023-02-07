@@ -1,0 +1,84 @@
+#+title: Macros in C
+#+author: dclinee
+#+date: <2023-02-05 Sun>
+* Examples of Macros in C
+A macro in C programming language is a block or set of satements of program code that can
+be replaced by macro #define directive.
+** 1. Object-Like Macro
+This macro can be a pointer variable or identifier or variable defined using #define and
+it is replaced by its value. This is mainly used when numeric constants are required.
+#+begin_src C
+  #define MAC 100
+#+end_src
+
+** Function-Like Macro
+This macro is similar to function calling in  C programming language.
+In this, a function name is defined with arguments passed to the function.
+
+*** Example one
+
+#+begin_src C
+  #define ADD (p, q) (p) + (q);
+#+end_src
+Before using the macro in C programming language you should note the following points:
+In C programming language, we use "define" for define a macro with "#" prefixed is used
+for defining constants for entire program, so when we define a constant with some macro
+name then in the entire program the defined constant is matched and is replaced with the
+value that is assigned at starting of the decalring the macro with "#define" statement.
+#+begin_src C
+#include <stdio.h>
+#define PI 3.1415926
+
+int main(void)
+{
+printf("The value of PI is: %f\n", PI);
+return 0;
+}
+#+end_src
+
+#+RESULTS:
+: The value of PI is: 3.141593
+
+*** Example two
+Similarly, "#define" is used to include header file in C programming language. For example,
+We saw in above code "#define" in this "stdio.h" is a header file we use this header file
+because to read and print values we use "printf" and "scanf" are within this "stdio.h" header file.
+You should note that when the argument passed to the function-like macro where it support any datatype.
+
+#+begin_src C
+    #include <stdio.h>
+   #define INCREMENT(n) ++n
+  int main(void)
+    {
+       char *p = "dclinee";
+       int num = 100;
+       printf("This use char datatype %s\n", INCREMENT(p));
+       printf("This use int datatype %d\n", INCREMENT(num));
+       return 0;
+    }
+#+end_src
+
+#+RESULTS:
+| This | use | char | datatype | clinee |
+| This | use | int  | datatype |    101 |
+
+*** Another example of above example(Example two)
+The macro can also be written in multiple lines starting the statements with '\' and no need to end '\'.
+#+begin_src C
+  #include <stdio.h>
+  #define MACRO(n, limit) while (n < limit) \
+      { \
+      printf("dclinee "); \
+      n++; \
+      }
+  int main(void)
+    {
+      int n = 0;
+      MACRO(n, 5);
+
+      return 0;
+    }
+#+end_src
+
+#+RESULTS:
+: dclinee dclinee dclinee dclinee dclinee

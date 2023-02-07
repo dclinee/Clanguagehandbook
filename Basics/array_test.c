@@ -1,8 +1,10 @@
 #include <stdio.h>
+<<<<<<< HEAD
 #include <stlib.h>
 #include <string.h>
+=======
+>>>>>>> 61d37ecd8a4ff26b974ec567456ba41f7ec4e298
 #define SIZE 3
-
 int main()
 {
 	// int size = 3;

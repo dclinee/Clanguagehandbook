@@ -1,0 +1,295 @@
+#+title: 50-point summary of Emacs Lisp
+#+author: dclinee
+#+date: <2023-01-28 Sat>
+* 1.Basics
+** A. "set" assigns a value to a symbol
+#+begin_src emacs-lisp
+  (set 'fname "Dclinee")
+#+end_src
+#+RESULTS:
+: Dclinee
+Since quoting the symbol name is so common a second assignment opetator
+was created, "setq".
+** B. "setq" sets a value of a variable
+#+begin_src emacs-lisp
+  (setq fname "dclinee")
+#+end_src
+
+#+RESULTS:
+: dclinee
+but can take multiple arguments
+#+begin_src emacs-lisp
+    (setq first_name "denng"
+          secod_name "changlin")
+#+end_src
+
+#+RESULTS:
+: changlin
+It returns the last value set.
+* 2. ";" is the comment character
+A comment is text that ignored by Emacs Lisp.
+Usually used to annotate the code, or documentation, or for copyright info.
+Comment syntax starts with one or more than one semicolons to end of line.
+** ";" I'm a comment
+#+begin_src emacs-lisp
+  ; I'm a comment
+  (setq my_name "dclinee") ; another comment too
+#+end_src
+** ";;" this is a comment
+;; By the Emacs convention, comment on a line by itself starts with 2 semicolons
+** ";;;" HEADER COMMENT
+;; By the Emacs convention, comment starting with 3 semicolons is header comment.
+* 3. List operator
+A List is a sequence of zero or more lisp expressions enclosed in  parents.
+** car function
+Return the first element of the List
+#+begin_src  emacs-lisp
+  (car '(a b c d e))
+#+end_src
+#+RESULTS:
+: a
+** cdr function
+Return the list without the first element
+#+begin_src emacs-lisp
+  (cdr '(a b c d e))
+#+end_src
+#+RESULTS:
+| b | c | d | e |
+** list function
+Makes a list from its arguments
+#+begin_src emacs-lisp
+  (list 'x 'A 'xf45 '(a b))
+#+end_src
+
+#+RESULTS:
+| x | A | xf45 | (a b) |
+** cons function
+Prepends its first argument to is second
+#+begin_src emacs-lisp
+  (cons '(a b) '(c d e))
+#+end_src
+
+#+RESULTS:
+| (a b) | c | d | e |
+** append function
+Strip the outer parens from its arguments and then munges all of them into a single list.
+#+begin_src emacs-lisp
+  (append '(a b) '(c d (e)))
+#+end_src
+
+#+RESULTS:
+| a | b | c | d | (e) |
+** reverse function
+Reverses a list's top level element
+#+begin_src emacs-lisp
+  (setq x '(a b c d e))
+  (reverse x)
+#+end_src
+
+#+RESULTS:
+| e | d | c | b | a |
+** length function
+Return number of top level list elements.
+#+begin_src emacs-lisp
+  (length '(a b c d (e)))
+#+end_src
+
+#+RESULTS:
+: 5
+** nthcdr function
+Return the nth cdr.
+#+begin_src emacs-lisp
+  (nthcdr 2 '(a b c d e))
+#+end_src
+
+#+RESULTS:
+| c | d | e |
+** nth function
+Return nth element of a list.
+#+begin_src emacs-lisp
+  (nth 2 '(a b c d e))
+#+end_src
+
+#+RESULTS:
+: c
+** mapcar function
+Given a function and a list, it calls the function on each element of list
+and return a list.
+#+begin_src emacs-lisp
+  (mapcar 'length '((a) (a b) (a b c ) (a b c d ) (a b c d e)))
+#+end_src
+
+#+RESULTS:
+| 1 | 2 | 3 | 4 | 5 |
+** apply function
+Apply a functioin on list.
+#+begin_src emacs-lisp
+  (apply 'max '(2 3 1 5 9))
+#+end_src
+
+#+RESULTS:
+: 9
+** setcar function
+Sets the value of the car in the cons cell.
+#+begin_src emacs-lisp
+  (setq a (cons 'x 'y))
+  (setcar a 'w)
+#+end_src
+
+#+RESULTS:
+: w
+** setcdr function
+Sets the value of the cdr in the cons cell.
+#+begin_src emacs-lisp
+  (setq b (cons 'x 'y))
+  (setcdr b 'w)
+  (b)
+#+end_src
+
+#+RESULTS:
+: w
+** sort function
+Sorts a list.
+#+begin_src emacs-lisp
+  (sort '(2 3 1 56 34 56 98) '<)
+#+end_src
+
+#+RESULTS:
+| 1 | 2 | 3 | 34 | 56 | 56 | 98 |
+
+* 4. String functions
+** (string = s1 s2) function
+Compares two strings for eauality.
+#+begin_src emacs-lisp
+  (string= "abc" "abc")
+#+end_src
+
+#+RESULTS:
+: t
+** (stringp x)
+Testing if arg is a string.
+#+begin_src emacs-lisp
+  (stringp "abc123")
+#+end_src
+
+#+RESULTS:
+: t
+** (concat a b [c...]) function
+Concats its args with together.
+#+begin_src emacs-lisp
+  (concat "I " "am " "a emacser.")
+#+end_src
+
+#+RESULTS:
+: I am a emacser.
+** (aref sepx num) function
+Return the nth char(0 based).
+#+begin_src emacs-lisp
+  (aref "abcdef" 2)
+#+end_src
+
+#+RESULTS:
+: 99
+*** (aset sepx num ch) function
+Set nth char.
+#+begin_src emacs-lisp
+  (aset "run" 1 ?A)
+#+end_src
+
+#+RESULTS:
+: 65
+
+** (substring sepx from [to]) function
+#+begin_src emacs-lisp
+  (substring "A good book to introduce Elisp." 1 4)
+#+end_src
+
+#+RESULTS:
+:  go
+
+* 5. List background
+Lists are composed of smallers units called 'cons cell'.
+A cons cell has two parts, a 'car' and a 'cdr'.
+Lists are made of having data in the 'car' part and the 'cdr' part pointing another
+cons cell. The last cdr of a proper list is nil.
+
+* 6. Data Types
+** A. Integer
+** B. Floating Point
+** C. Character
+** D. Symbol
+** E. Sequences
+*** a. List
+*** b. Array
+** F. String
+** G. vector
+* 7. Arithmetic
+** + function
+Addition function.
+#+begin_src emacs-lisp
+  (+ 1 2 3 4 5)
+#+end_src
+
+#+RESULTS:
+: 15
+
+** - function
+Subtraction function.
+#+begin_src emacs-lisp
+  (- 15 1 2 3 4 5)
+#+end_src
+
+#+RESULTS:
+: 0
+
+** * function
+Multiplication function.
+#+begin_src emacs-lisp
+  (* 1 2 3 4 5)
+#+end_src
+
+#+RESULTS:
+: 120
+
+** / function
+Division function.
+#+begin_src emacs-lisp
+  (/ 120 1 2 3 4 5)
+#+end_src
+
+#+RESULTS:
+: 1
+
+** % function
+Modulo (remainder) function.
+#+begin_src emacs-lisp
+  (% 5 2)
+#+end_src
+
+#+RESULTS:
+: 1
+* 8. Logical functions (and, or, not, eq)
+** or function
+Evaluates args in order and teturns the first true one.
+#+begin_src emacs-lisp
+  (or nil 4 5)
+#+end_src
+
+#+RESULTS:
+: 4
+** = function
+Tests if two args are equal.
+#+begin_src emacs-lisp
+  (= 1 1)
+#+end_src
+
+#+RESULTS:
+: t
+** /= function
+Tests if the two numbers arr not equal.
+#+begin_src emacs-lisp
+  (/= 1 2)
+#+end_src
+
+#+RESULTS:
+: t

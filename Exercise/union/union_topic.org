@@ -1,0 +1,78 @@
+#+title: Union in C
+#+author: dclinee
+#+data: <2023-02-04 Sat>
+* The topic of Union in C
+Like Structures, union is a user defined data type.
+In union, all members share the smae memory location.
+** Definition of Union in C
+For example in the following C program, both x and y share the same location.
+If we change x, we can see the changes being reflected in y.
+#+begin_src  C
+#include <stdio.h>
+union test{int x, y;};
+int main(void)
+{
+union test t;
+
+t.x = 2;
+printf("After making x = 2:\n x = %d\n y = %d\n", t.x, t.y);
+
+t.y = 100;
+printf("After making y = 100:\n x = %d\n y = %d\n", t.x, t.y);
+
+return 0;
+}
+#+end_src
+
+#+RESULTS:
+| After | making |   x | = |   2: |
+| x     | =      |   2 |   |      |
+| y     | =      |   2 |   |      |
+| After | making |   y | = | 100: |
+| x     | =      | 100 |   |      |
+| y     | =      | 100 |   |      |
+** How is the size of union decided by compiler?
+Size of a union is taken according the size of largest member in union.
+#+begin_src C
+    #include <stdio.h>
+  union test1 {int x; int y;} Test1;
+  union test2 {int x; char y;} Test2;
+  union test3 {int x[10]; char y;} Test3;
+  int main(void)
+       {
+         printf("sizeof(Test1) = %lu\n", sizeof(Test1));
+         printf("sizeof(Test2) = %lu\n", sizeof(Test2));
+         printf("sizeof(Test2) = %lu\n", sizeof(Test3));
+
+         return 0;
+       }
+#+end_src
+
+#+RESULTS:
+| sizeof(Test1) | = |  4 |
+| sizeof(Test2) | = |  4 |
+| sizeof(Test2) | = | 40 |
+** Pointers to unions?
+Like structures, we can have pointers to unions and can access members using
+the arrow operator (->).
+The following example demonstrates the same.
+
+#+begin_src C
+    #include <stdio.h>
+  union test {int x; char y;};
+
+  int main(void)
+    {
+      union test p1;
+      p1.x = 6;
+      p1.y = 'A';
+
+      union test *ptr = &p1;
+      printf("p1.x = %d, p1.y = %c\n", ptr->x, ptr->y);
+
+      return 0;
+    }
+#+end_src
+
+#+RESULTS:
+| p1.x = 65 | p1.y = A |
