@@ -4,6 +4,88 @@
 
 There are 4 main types of preprocessor directives：
 * 1. Macros
-* 2. Files inclusion
+
+Macros are pieces of a program that is given some name. Whenever this name is encounter by the compiler,
+compiler replaces the name with the actual piece of code. The "#define" directive is used to define a
+macro.
+
+** Macro without arguments
+#+BEGIN_SRC C++
+  #include <iostream>
+  #define LIMIT 5
+  int main(void)
+    {
+      for (int i = 0; i < LIMIT; i++)
+        {
+          std::cout << i << "\n";
+        }
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+| 0 |
+| 1 |
+| 2 |
+| 3 |
+| 4 |
+#+BEGIN_SRC C
+  #include <stdio.h>
+  #define LIMIT 5
+  int main(void)
+    {
+      for (int i = 0; i < LIMIT; i++)
+        {
+          printf("%d\n", i);
+        }
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+| 0 |
+| 1 |
+| 2 |
+| 3 |
+| 4 |
+
+** Macro with arguments
+We can also pass arguments to Macros. Macros defined with arguments work similarly to functions.
+
+#+BEGIN_SRC C++
+  #include <iostream>
+  #define AREA(l, b) (l * b)
+  int main(void)
+    {
+      int l1 = 5, b1 = 5;
+      int area = AREA(l1, b1);
+      std::cout <<"Area of rectangle is: " << area << "\n";
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+: Area of rectangle is: 25
+
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  #define AREA(l, b) (l * b)
+  int main(void)
+    {
+      int l1 = 5, b1 = 5;
+      int area = AREA(l1, b1);
+      printf("Area of rectangle is: %d\n", area);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+: Area of rectangle is: 25
+
+
+
+* 2. Files Inclusion
 * 3. Conditional Compilation
 * 4. Other Directives
