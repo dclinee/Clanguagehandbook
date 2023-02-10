@@ -83,7 +83,7 @@ The macro can also be written in multiple lines starting the statements with '\'
 #+RESULTS:
 : dclinee dclinee dclinee dclinee dclinee
 
-*** In C, the macro can use conditional statements like if-else directives also
+In C, the macro can use conditional statements like if-else directives also
 while defines that can be used for conditional completion.
 #+begin_src C
   #include <stdio.h>
@@ -97,3 +97,79 @@ while defines that can be used for conditional completion.
 #+end_src
 
 #+RESULTS:
+
+If macro is used for a function-like macro which has arguments passed to it
+are not evaluated before macro expansion. Let us see the example:
+
+#+begin_src C
+  #include <stdio.h>
+  #define DIV(a, b) (a/b)
+  int main(void)
+    {
+      printf("%d\n", DIV(5+3, 3+2));
+      return 0;
+    }
+#+end_src
+
+#+RESULTS:
+: 8
+
+Here in above macro is expanded as 5+3/3+2 = 5+1+2=8 which is confusing so you can
+resolve by below modified macro.
+
+
+#+begin_src C
+  #include <stdio.h>
+  #define DIV(a, b) (a) / (b)
+  int main(void)
+    {
+      printf("%d\n", DIV(5+3, 3+2));
+
+      return 0;
+    }
+#+end_src
+
+#+RESULTS:
+: 1
+The macro is expended as (5+3)/(3+2) = 8/5=1.
+
+The macro also supports to pass the tokens to the macro to concatenate tokens
+using the special operator "##" which is known as the token pasting operator.
+#+begin_src C
+  #include <stdio.h>
+  #define concate(p, q) p##q
+
+  int main(void)
+    {
+      printf("%d\n", concate(56, 78));
+
+      return 0;
+    }
+#+end_src
+
+#+RESULTS:
+: 5678
+
+The macro also can be used to pass the token that can be converted to
+a string by using the "#" special symbol before the token.
+
+#+begin_src C
+  #include <stdio.h>
+  #define get_string(n) #n
+
+  int main(void)
+    {
+      printf("%s\n", get_string(dclinee));
+
+      return 0;
+    }
+#+end_src
+
+* Conclusio
+In C programming language, the macro is not less than similar to functions,
+but macro has built-in macro also.In C, the macro is used to define any
+constant value or any variable with its value in the entire program
+that will be replaced by this macro name, where macro contains the set of
+code that will be called when themacro name is used in the program.
+The macro uses the “#define” directive to define the macro in C programming
+language. This is very useful to save time and have less code writing.
