@@ -1,0 +1,48 @@
+#+title: Constant Pointer In C
+#+author: dclinee
+#+date: <2023-02-09 Thu>
+* Scope of Article
+  ׀This article defines how to use pointers with the const keyword in C, the syntax and
+  examples regarding the same.
+  ׀This article also hightlights the differences between constant pointers and pointers
+  to a constant in C.
+
+* Introduction
+  Whenever there is a requirement to make variable immutable in C, we can resort to the
+  const keyword in C. By doing so, the variable cannot be modified as long as it exists
+  in memory. Similarly, we can use the const keyword with pointers as well. There are
+  multiples usages of pointers with the const keyword, such as
+  * We can create a constant pointer in C, which means that the value of the pointer
+    variable wouldn't change.
+  * We can create a pointer to a constant in C, whiche means that the pointer would point
+    to a constant variable(created using const).
+  * We can also create a constant pointer to a constant in C, which means that neither the
+    value of the pointer nor the value of the variable pointed to by the pointer would change.
+
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+    {
+      // constant variable
+      const int pi = 3.14;
+      printf("the value of Pi is: %d\n", pi);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+: the value of Pi is: 3
+
+* How const Pointer Works in C?
+As described earlier, a constant pointer in C is one whose value cannot be changed in program.
+It is quite similar to a constant variable in C. The only difference here is that, by definition,
+pointers store memory address. So, a constant pointer will keep pointing to the same memory
+location to which it is initially assigned.
+ *Note*: It is necessary to initialize the constant pointer during the declaration itself, unlike
+ a normal pointer which can be left uninitialized.
+ *Syntax*
+ The syntax for declaring a const pointer in C is
+ /<data type> * const <pointer name = memory address>;/
+ *Note*: Here, the const keyword must appear after the * in the declaration.
