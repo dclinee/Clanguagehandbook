@@ -230,3 +230,141 @@ The following code throws an error because we are attempting to change the value
 #+END_SRC
 
 #+RESULTS:
+
+We can also use such pointer store the address of non-constant variable.
+
+
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+  {
+    const int a = 10;
+    const int *ptr = &a;
+    int b  = 100;
+    ptr = &b;
+
+    printf("Valude of ptr is: %d\n", *ptr);
+
+    return 0;
+  }
+#+END_SRC
+
+#+RESULTS:
+: Valude of ptr is: 100
+
+We can change the value stored in the pointer make it point to another constant variable.
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+  {
+    const int a = 10;
+    const int b = 100;
+    const int *ptr = &a;
+
+    printf("Address stored in the pointer before change: %p\n", ptr);
+    printf("Value stored in that address before change: %d\n", *ptr);
+    ptr = &b;
+    printf("Address stored in the pointer after change: %p\n", ptr);
+    printf("Value stored in that address after change: %d\n", *ptr);
+
+    return 0;
+  }
+#+END_SRC
+
+#+RESULTS:
+| Address | stored | in | the  | pointer | before | change: | 0x7ffe6aa52938 |
+| Value   | stored | in | that | address | before | change: |             10 |
+| Address | stored | in | the  | pointer | after  | change: | 0x7ffe6aa5293c |
+| Value   | stored | in | that | address | after  | change: |            100 |
+
+As we can see in the output above, the address stored in ptr changes and now it points to variable b.
+
+* Constant pointer to a constant variable in C
+This type of pointer is used when we want a pointer  to a constant variable, as well as keep the
+address stored in the pointer as constant(unlike the example above). In other words, a constant
+pointer to a constant in C will always point to a specific constant variable and cannot be reassigned
+to another address. This type of pointer is essentially a combination of the two types discussed previously,
+i.e., a conbination of constant pointer and a pointer to a constant.
+
+*Note*: It is necessary to initialize these types of pointers during the declaration itself.
+
+*Syntax*
+
+The syntax for decalring a pointer to a constant in C is:
+const data_type * const pointer_name = &constant_variable_name;
+data_type const * const pointer_name = &constant_variable_name;
+
+Here, we have two const keywords in the syntax, one before and one after the '*'.
+
+** Examples of constant pointer to a constant variable in C
+
+Let's look at a few usages of a constant pointer to a constant in C.
+
+The following code shows the correct usage of a constant pointer to a constant.
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+    {
+      const int a = 10;
+      int const * const ptr = &a;
+      printf("Value of ptr is: %d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+: Value of ptr is: 10
+
+These type of pointers can also point to non-constant variables.
+
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+    {
+      int b = 100;
+      int const * const ptr = &b;
+      printf("Value of ptr is: %d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+: Value of ptr is: 100
+
+The following code throws an error when we try to change the value of the pointer or the values of
+The constant variable using the pointer.
+
+
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+    {
+      const int a = 10;
+      int const * const ptr = &a;
+      ,*ptr = 100; // cannot change value of constant variable
+      const int b = 100;
+      ptr = &b; // cannot reassign pointer to different address
+      printf("Value of ptr is: %d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
+
+* Conclusion
+There are multiple benefits of using pointers with const in C.
+
+When a constant pointer is declared in C, the compiler can make some optimizations when converting the
+C source code to assembly-level instructions.
+
+If it is not intended for a pointer variable that is passed as a parameter to a function to change its
+value, the declaring the pointer as constant acts as a check against accidental modifications.
+
+As described in this article, it is not advisable to use an ordinary pointer with a const variable in
+C due to loss of const property. So, we must use the "pointer to a costant" syntax.
