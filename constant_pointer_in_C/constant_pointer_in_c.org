@@ -81,3 +81,38 @@ of declaration.
 #+END_SRC
 
 #+RESULTS:
+** Constant pointer variable cannot point to another variable now
+As discussed previously, the value of the constant pointer variable cannot be changed as shown in
+the code below.
+
+#+BEGIN_SRC C
+    #include <stdio.h>
+  int main(void)
+    {
+      int a = 10, b = 20;
+      int * const ptr = &a;
+      ptr = &b;              // cannot point to another variable now
+      printf("%d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+
+** Can change the value stored at the memory location
+Similar to a non-const pointer, we can use a constant pointer to alter the value stored at the memory
+location to whiche it is pointing. We can also verify that the address stroed in the constant pointer
+remains the same after the change.
+
+#+BEGIN_SRC C
+    #include <stdio.h>
+  int main(void)
+    {
+      int a = 10, b = 20;
+      int * const ptr = &a;
+      printf("%d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
