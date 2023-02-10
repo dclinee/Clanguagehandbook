@@ -106,13 +106,127 @@ location to whiche it is pointing. We can also verify that the address stroed in
 remains the same after the change.
 
 #+BEGIN_SRC C
-    #include <stdio.h>
+  #include <stdio.h>
   int main(void)
+  {
+    int a = 10;
+    int * const ptr = &a;
+    printf("Value of 'a' before change is: %d\n", a);
+    printf("Address pointed to by ptr is: %p\n", ptr);
+
+    ,*ptr = 100;// this is allowed because only the pointer is constant but 'a' is variable.
+    printf("Value of 'a' after change is: %d\n", a);
+    printf("Address pointed to by ptr is: %p\n", ptr);
+
+
+    return 0;
+  }
+#+END_SRC
+
+#+RESULTS:
+| Value   | of      | 'a' | before | change | is: |             10 |
+| Address | pointed | to  | by     | ptr    | is: | 0x7ffed948f65c |
+| Value   | of      | 'a' | after  | change | is: |            100 |
+| Address | pointed | to  | by     | ptr    | is: | 0x7ffed948f65c |
+
+* Pointer to a constant variable in C
+Unlikely the constant pointer discussed operviously，a pointer to constant in C refers to an ordinary
+pointer variable that can only strore the address of a constant variable，e.g., a variable defined
+using the const keyword.
+*Note*: Unlikely a constant pointer, it is not necessary to initialize the value of a pointer to a
+constant at the time of declaration.
+
+*Syntax*
+The syntax for declaring a pointer to a constant variable in C is
+#+BEGIN_SRC C
+  /*
+   ,const data_type * pointer_name = &constant_variable_name;
+   or
+  ,data_type const * pointer_name = &constant_variable_name;*/
+#+END_SRC
+*Note*: Although there are two sytaxes, as shown above, notice that the const keyword should before the *.
+This is difference between the syntax of a constant pointer and a pointer to a constant in C.
+
+* why do we need a special pointer type for const variable?
+Let's understand why it is not advisable to use a ordinary pointer variable to store the address of a
+constant variable. Consider the following example：
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+  {
+    const int a = 10;
+    int *ptr = &a;
+    ,*ptr = 100;
+    printf("Value of 'a' is: %d\n", a);
+
+    return 0;
+  }
+#+END_SRC
+
+#+RESULTS:
+: Value of 'a' is: 100
+
+We can see from the output above, although the compiler generages a warning，the value of 'a' has changed
+from 100 to 100, although a declared as a constant variable. This happens because when an ordinary pointer
+like ptr points to a constant variable, the compiler discards the constant attribute given to the variable
+temporarily whenever the pointer tries to modify the value of that variable. This is not recommended as it
+can lead to security flaws and defeat the purpose of making the variable constant.
+
+*Note*: Even though the value of 'a' can be changed by ptr in the above example, we can not directly alter
+modify the value of 'a'. The following code will produce an error.
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+  {
+    const int a = 10;
+    int *ptr = &a;
+    a = 100; // assignment of read-only variable 'a'
+    printf("Value of 'a' is: %d\n", a);
+
+    return 0;
+  }
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC shell
+waring: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+#+END_SRC
+Thus, we need the different pointer syntax to pointer to a constant variable in C.
+** Examples of pointer to a constant variables
+Let's look at a few of examples of pointers to a constant variable in C.
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+  {
+    const int a = 10;
+    const int *ptr; // Note that it is no necessary to initialize the pointer at the time of declaration.
+    ptr = &a;
+    printf("Valude of ptr is: %d\n", *ptr);
+
+    return 0;
+  }
+#+END_SRC
+
+#+RESULTS:
+: Valude of ptr is:10
+
+The following code throws an error because we are attempting to change the value of a constant variable.
+
+
+#+BEGIN_SRC C
+    #include <stdio.h>
+    int main(void)
     {
-      int a = 10, b = 20;
-      int * const ptr = &a;
-      printf("%d\n", *ptr);
+      const int a = 10;
+      const int *ptr = &a;
+      ,*ptr = 100; // error: assignment of read-only location '*ptr'
+
+      printf("Valude of ptr is: %d\n", *ptr);
 
       return 0;
     }
 #+END_SRC
+
+#+RESULTS:
