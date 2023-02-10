@@ -46,3 +46,38 @@ location to which it is initially assigned.
  The syntax for declaring a const pointer in C is
  /<data type> * const <pointer name = memory address>;/
  *Note*: Here, the const keyword must appear after the * in the declaration.
+* Examples
+Let's look at a few examples of correct and incorrect usages of a constant pointer in C:
+** The following code demostrates the proper way of using a constant pointer in C.
+#+BEGIN_SRC C
+    #include <stdio.h>
+  int main(void)
+    {
+      int a = 10, b = 20;
+      int * const ptr = &a;
+      printf("%d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+: 10
+** The error example
+The following code produces an error because the constant pointer was not initialized at the time
+of declaration.
+
+#+BEGIN_SRC C
+    #include <stdio.h>
+  int main(void)
+    {
+      int a = 10, b = 20;
+      int * const ptr;
+      ptr = &a; // error: assignment of read-only variable 'ptr'
+      printf("%d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
