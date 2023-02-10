@@ -82,3 +82,18 @@ The macro can also be written in multiple lines starting the statements with '\'
 
 #+RESULTS:
 : dclinee dclinee dclinee dclinee dclinee
+
+*** In C, the macro can use conditional statements like if-else directives also
+while defines that can be used for conditional completion.
+#+begin_src C
+  #include <stdio.h>
+  int main(void)
+    {
+      #if VERSION >= 2
+      printf("message ");
+      #endif
+      return 0;
+    }
+#+end_src
+
+#+RESULTS:
