@@ -1,0 +1,76 @@
+#+title: What is C Language?
+#+author: dclinee
+#+date: <2023-02-11 Sat>
+* What is C language?
+The C language is developed by Dennis Ritchie for creating system applications that
+directly interact with the hardware devices such as drivers, kernels, etc.
+
+C programming language is considered as the base for other programming languages，
+that is why it is known as mother language.
+
+It can be defined in following ways:
+1. Mother language
+2. System programming language
+3. Procedure-oriented programming language
+4. Structure programming language
+5. Mid-level programming language
+
+* 1) C as a mother language
+C programming language is considered mother language of all modern programming languages because of
+most of the compilers, JVMs, Kernels, ect. are written in C language, and most of the programming
+languages fllow C syntax，for example，C++, Java, C#, etc.
+
+It provies the core concepts like the array, string, function, file handling, etc. that are being
+used in many languages like C++, Java, C#, etc.
+
+* 2) C as a system programming language
+A system programming language is used to create system software. C language is a system programming
+language because it can be used to do low-level programming(for example drivers and kernels). It is
+generally used to create hardware devices, OS, drivers, kernels, etc. Linux kernel is written in C.
+It can't be used for internet programming like, Java, .Net, PHP, etc.
+
+* 3) C as a procedural programming language
+A procedure is known as a function, method, routine, subroutine, etc. Aprocedural language specifies
+a series of steps for the program to solve the problem.
+
+A procedural language breaks the program into functions, data structures, etc.
+
+C is a procedural language. In C, variables ad functions prototypes must be decalred before being used.
+
+* 4) C as a structured programming language
+
+A structured programming language is a subset of the procedural language. Structure means to break a
+program into parts or blocks so that it may be easy to understand.
+
+In the C language, we break the programm into parts using functions. It makes the program easier to
+undeerstand and modify.
+
+* 5) C as a mid-level programming language
+C is considered as a mid-level language because it supports the feature of both low-level and
+high-level languages. C language program is converted into assembly code, it supports pointer
+arithmetic (low-level), but it is machine independent(a feature of high-level).
+
+A Low-level language is specific to one machine, i.e., machine dependent. It is machine
+dependent, fast to run. But it is not easy to understand.
+
+A High-level language is not specific to one machine, i.e., machine independent. It is easy to
+understand.
+
+* C program
+
+In this tutorial, all C programs are given with C compiler so that you can quickly change the C
+program code.
+
+#+NAME: main.c
+#+begin_src C
+  #include <stdio.h>
+  int main(void)
+  {
+    printf("Hello, C programming language tutorial.\n");
+
+    return 0;
+  }
+#+end_src
+
+#+RESULTS: main.c
+| Hello | C programming language tutorial. |
