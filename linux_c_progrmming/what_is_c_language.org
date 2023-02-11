@@ -1,0 +1,24 @@
+#+title: What is C Language?
+#+author: dclinee
+#+date: <2023-02-11 Sat>
+* What is C language?
+The C language is developed by Dennis Ritchie for creating system applications that
+directly interact with the hardware devices such as drivers, kernels, etc.
+
+C programming language is considered as the base for other programming languages，
+that is why it is known as mother language.
+
+It can be defined in following ways:
+1. Mother language
+2. System programming language
+3. Procedure-oriented programming language
+4. Structure programming language
+5. Mid-level programming language
+
+* 1) C as a mother language
+C programming language is considered mother language of all modern programming languages because of
+most of the compilers, JVMs, Kernels, ect. are written in C language, and most of the programming
+languages fllow C syntax，for example，C++, Java, C#, etc.
+
+It provies the core concepts like the array, string, function, file handling, etc. that are being
+used in many languages like C++, Java, C#, etc.
