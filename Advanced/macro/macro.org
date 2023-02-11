@@ -85,6 +85,7 @@ The macro can also be written in multiple lines starting the statements with '\'
 
 In C, the macro can use conditional statements like if-else directives also
 while defines that can be used for conditional completion.
+#+NAME: conditional statement
 #+begin_src C
   #include <stdio.h>
   int main(void)
@@ -165,7 +166,7 @@ a string by using the "#" special symbol before the token.
     }
 #+end_src
 
-* Conclusio
+* Conclusion
 In C programming language, the macro is not less than similar to functions,
 but macro has built-in macro also.In C, the macro is used to define any
 constant value or any variable with its value in the entire program
