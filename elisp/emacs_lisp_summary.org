@@ -293,3 +293,21 @@ Tests if the two numbers arr not equal.
 
 #+RESULTS:
 : t
+** > , < , <= , >= function
+kinda what you would think.
+#+begin_src emacs-lisp
+  (< 1 2)
+  (> 1 2)
+  (<= 1 2)
+  (>= 1 2)
+#+end_src
+
+#+RESULTS:
+** numberp function?
+Is argument a number?
+#+begin_src emacs-lisp
+  (numberp 5)
+#+end_src
+
+#+RESULTS:
+: t
