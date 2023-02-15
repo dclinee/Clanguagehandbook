@@ -1,0 +1,370 @@
+#+title: Constant Pointer In C
+#+author: dclinee
+#+date: <2023-02-09 Thu>
+* Scope of Article
+  ׀This article defines how to use pointers with the const keyword in C, the syntax and
+  examples regarding the same.
+  ׀This article also hightlights the differences between constant pointers and pointers
+  to a constant in C.
+
+* Introduction
+  Whenever there is a requirement to make variable immutable in C, we can resort to the
+  const keyword in C. By doing so, the variable cannot be modified as long as it exists
+  in memory. Similarly, we can use the const keyword with pointers as well. There are
+  multiples usages of pointers with the const keyword, such as
+  * We can create a constant pointer in C, which means that the value of the pointer
+    variable wouldn't change.
+  * We can create a pointer to a constant in C, whiche means that the pointer would point
+    to a constant variable(created using const).
+  * We can also create a constant pointer to a constant in C, which means that neither the
+    value of the pointer nor the value of the variable pointed to by the pointer would change.
+
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+    {
+      // constant variable
+      const int pi = 3.14;
+      printf("the value of Pi is: %d\n", pi);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+: the value of Pi is: 3
+
+* How const Pointer Works in C?
+As described earlier, a constant pointer in C is one whose value cannot be changed in program.
+It is quite similar to a constant variable in C. The only difference here is that, by definition,
+pointers store memory address. So, a constant pointer will keep pointing to the same memory
+location to which it is initially assigned.
+ *Note*: It is necessary to initialize the constant pointer during the declaration itself, unlike
+ a normal pointer which can be left uninitialized.
+ *Syntax*
+ The syntax for declaring a const pointer in C is
+ /<data type> * const <pointer name = memory address>;/
+ *Note*: Here, the const keyword must appear after the * in the declaration.
+* Examples
+Let's look at a few examples of correct and incorrect usages of a constant pointer in C:
+** The following code demostrates the proper way of using a constant pointer in C.
+#+BEGIN_SRC C
+    #include <stdio.h>
+  int main(void)
+    {
+      int a = 10, b = 20;
+      int * const ptr = &a;
+      printf("%d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+: 10
+** The error example
+The following code produces an error because the constant pointer was not initialized at the time
+of declaration.
+
+#+BEGIN_SRC C
+    #include <stdio.h>
+  int main(void)
+    {
+      int a = 10, b = 20;
+      int * const ptr;
+      ptr = &a; // error: assignment of read-only variable 'ptr'
+      printf("%d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+** Constant pointer variable cannot point to another variable now
+As discussed previously, the value of the constant pointer variable cannot be changed as shown in
+the code below.
+
+#+BEGIN_SRC C
+    #include <stdio.h>
+  int main(void)
+    {
+      int a = 10, b = 20;
+      int * const ptr = &a;
+      ptr = &b;              // cannot point to another variable now
+      printf("%d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+
+** Can change the value stored at the memory location
+Similar to a non-const pointer, we can use a constant pointer to alter the value stored at the memory
+location to whiche it is pointing. We can also verify that the address stroed in the constant pointer
+remains the same after the change.
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+  {
+    int a = 10;
+    int * const ptr = &a;
+    printf("Value of 'a' before change is: %d\n", a);
+    printf("Address pointed to by ptr is: %p\n", ptr);
+
+    ,*ptr = 100;// this is allowed because only the pointer is constant but 'a' is variable.
+    printf("Value of 'a' after change is: %d\n", a);
+    printf("Address pointed to by ptr is: %p\n", ptr);
+
+
+    return 0;
+  }
+#+END_SRC
+
+#+RESULTS:
+| Value   | of      | 'a' | before | change | is: |             10 |
+| Address | pointed | to  | by     | ptr    | is: | 0x7ffed948f65c |
+| Value   | of      | 'a' | after  | change | is: |            100 |
+| Address | pointed | to  | by     | ptr    | is: | 0x7ffed948f65c |
+
+* Pointer to a constant variable in C
+Unlikely the constant pointer discussed operviously，a pointer to constant in C refers to an ordinary
+pointer variable that can only strore the address of a constant variable，e.g., a variable defined
+using the const keyword.
+*Note*: Unlikely a constant pointer, it is not necessary to initialize the value of a pointer to a
+constant at the time of declaration.
+
+*Syntax*
+The syntax for declaring a pointer to a constant variable in C is
+#+BEGIN_SRC C
+  /*
+   ,const data_type * pointer_name = &constant_variable_name;
+   or
+  ,data_type const * pointer_name = &constant_variable_name;*/
+#+END_SRC
+*Note*: Although there are two sytaxes, as shown above, notice that the const keyword should before the *.
+This is difference between the syntax of a constant pointer and a pointer to a constant in C.
+
+* why do we need a special pointer type for const variable?
+Let's understand why it is not advisable to use a ordinary pointer variable to store the address of a
+constant variable. Consider the following example：
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+  {
+    const int a = 10;
+    int *ptr = &a;
+    ,*ptr = 100;
+    printf("Value of 'a' is: %d\n", a);
+
+    return 0;
+  }
+#+END_SRC
+
+#+RESULTS:
+: Value of 'a' is: 100
+
+We can see from the output above, although the compiler generages a warning，the value of 'a' has changed
+from 100 to 100, although a declared as a constant variable. This happens because when an ordinary pointer
+like ptr points to a constant variable, the compiler discards the constant attribute given to the variable
+temporarily whenever the pointer tries to modify the value of that variable. This is not recommended as it
+can lead to security flaws and defeat the purpose of making the variable constant.
+
+*Note*: Even though the value of 'a' can be changed by ptr in the above example, we can not directly alter
+modify the value of 'a'. The following code will produce an error.
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+  {
+    const int a = 10;
+    int *ptr = &a;
+    a = 100; // assignment of read-only variable 'a'
+    printf("Value of 'a' is: %d\n", a);
+
+    return 0;
+  }
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC shell
+waring: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+#+END_SRC
+Thus, we need the different pointer syntax to pointer to a constant variable in C.
+** Examples of pointer to a constant variables
+Let's look at a few of examples of pointers to a constant variable in C.
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+  {
+    const int a = 10;
+    const int *ptr; // Note that it is no necessary to initialize the pointer at the time of declaration.
+    ptr = &a;
+    printf("Valude of ptr is: %d\n", *ptr);
+
+    return 0;
+  }
+#+END_SRC
+
+#+RESULTS:
+: Valude of ptr is:10
+
+The following code throws an error because we are attempting to change the value of a constant variable.
+
+
+#+BEGIN_SRC C
+    #include <stdio.h>
+    int main(void)
+    {
+      const int a = 10;
+      const int *ptr = &a;
+      ,*ptr = 100; // error: assignment of read-only location '*ptr'
+
+      printf("Valude of ptr is: %d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+
+We can also use such pointer store the address of non-constant variable.
+
+
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+  {
+    const int a = 10;
+    const int *ptr = &a;
+    int b  = 100;
+    ptr = &b;
+
+    printf("Valude of ptr is: %d\n", *ptr);
+
+    return 0;
+  }
+#+END_SRC
+
+#+RESULTS:
+: Valude of ptr is: 100
+
+We can change the value stored in the pointer make it point to another constant variable.
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+  {
+    const int a = 10;
+    const int b = 100;
+    const int *ptr = &a;
+
+    printf("Address stored in the pointer before change: %p\n", ptr);
+    printf("Value stored in that address before change: %d\n", *ptr);
+    ptr = &b;
+    printf("Address stored in the pointer after change: %p\n", ptr);
+    printf("Value stored in that address after change: %d\n", *ptr);
+
+    return 0;
+  }
+#+END_SRC
+
+#+RESULTS:
+| Address | stored | in | the  | pointer | before | change: | 0x7ffe6aa52938 |
+| Value   | stored | in | that | address | before | change: |             10 |
+| Address | stored | in | the  | pointer | after  | change: | 0x7ffe6aa5293c |
+| Value   | stored | in | that | address | after  | change: |            100 |
+
+As we can see in the output above, the address stored in ptr changes and now it points to variable b.
+
+* Constant pointer to a constant variable in C
+This type of pointer is used when we want a pointer  to a constant variable, as well as keep the
+address stored in the pointer as constant(unlike the example above). In other words, a constant
+pointer to a constant in C will always point to a specific constant variable and cannot be reassigned
+to another address. This type of pointer is essentially a combination of the two types discussed previously,
+i.e., a conbination of constant pointer and a pointer to a constant.
+
+*Note*: It is necessary to initialize these types of pointers during the declaration itself.
+
+*Syntax*
+
+The syntax for decalring a pointer to a constant in C is:
+const data_type * const pointer_name = &constant_variable_name;
+data_type const * const pointer_name = &constant_variable_name;
+
+Here, we have two const keywords in the syntax, one before and one after the '*'.
+
+** Examples of constant pointer to a constant variable in C
+
+Let's look at a few usages of a constant pointer to a constant in C.
+
+The following code shows the correct usage of a constant pointer to a constant.
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+    {
+      const int a = 10;
+      int const * const ptr = &a;
+      printf("Value of ptr is: %d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+: Value of ptr is: 10
+
+These type of pointers can also point to non-constant variables.
+
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+    {
+      int b = 100;
+      int const * const ptr = &b;
+      printf("Value of ptr is: %d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+: Value of ptr is: 100
+
+The following code throws an error when we try to change the value of the pointer or the values of
+The constant variable using the pointer.
+
+
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  int main(void)
+    {
+      const int a = 10;
+      int const * const ptr = &a;
+      ,*ptr = 100; // cannot change value of constant variable
+      const int b = 100;
+      ptr = &b; // cannot reassign pointer to different address
+      printf("Value of ptr is: %d\n", *ptr);
+
+      return 0;
+    }
+#+END_SRC
+
+* Conclusion
+There are multiple benefits of using pointers with const in C.
+
+When a constant pointer is declared in C, the compiler can make some optimizations when converting the
+C source code to assembly-level instructions.
+
+If it is not intended for a pointer variable that is passed as a parameter to a function to change its
+value, the declaring the pointer as constant acts as a check against accidental modifications.
+
+As described in this article, it is not advisable to use an ordinary pointer with a const variable in
+C due to loss of const property. So, we must use the "pointer to a costant" syntax.

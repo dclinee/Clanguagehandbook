@@ -1,0 +1,5 @@
+#+title: C Programming Language Tutorial
+#+author: dclinee
+#+date: <2023-02-11 Sat>
+
+* What is C language?

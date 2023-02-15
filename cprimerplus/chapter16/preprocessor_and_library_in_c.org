@@ -1,0 +1,61 @@
+#+title: C预处理器和C库
+#+author: dclinee
+#+date: <2023-02-11 Sat>
+
+C语言是建立在适当的关键字、表达式、语句以及使用他们的规则上。
+C语言标准不仅描述了C语言特性，还描述了如何执行C预处理器，C标准库有哪些函数及函数的工作原理。
+* C预处理器
+详细内容查看：[[https://gcc.gnu.org/onlinedocs/cpp/][The C Preprocessor]]
+** 什么叫C预处理器？
+
+The C preprocessor is not a part of the compiler, but is a seprate step in the
+compilation. In simple terms, a C preprocessor is just a text substitution tool
+and it instructs the compiler to do required Pre-processing before the actual
+compilation. We refer to the C Preprocessor as CPP.
+** 如何使用C预处理器？
+
+All preprocessor commands begin with a hash symbol(#). It must be the first
+nonblank character, and for readability, a preprocessor directive should begin in
+zhe first column.
+** C预处理器的作用？
+
+C预处理器的主要作用是进行文本替换，将一些文本替换另外一些文本。
+C预处理器根据预处理器指令把符号缩写替换成其表示的内容。
+C预处理器可以包含其他文件，可以选择让编译器查看哪些代码。
+** C预处理器开始工作前的准备工作
+
+1 编译器把源代码中出现的字符映射到源字符集，该过程处理多字节字符和三字节字符序列
+2 编译器定位每个反斜杠后面跟着换行符的实例，并删除它们。把两个物理行转换成一个逻辑行。
+  注意：换行符的意思是通过按下Enter键在源代码文件中换行所生成的字符，而不是指符号表征\n。
+3 编译器把文本划分成预处理记号序列、空白序列和注释序列（记号是由空格、制表符或换行符分隔的项）
+  注意：该过程编译器将用一个空格字符替换每一条注释，用一个空格字符替换所有的空白字符序列。
+完成以上工作，程序已经准备好进入预处理阶段，预处理器查找每一行中以#号开始的预处理指令。
+
+** C预处理要处理那些工作？
+1 将所有的#define删除， 并且展开所有的宏定义。
+2 处理所有条件预编译指令，（如#if、#ifdef等）
+3 处理“#include”预编译指令，将被包含的文件插入到该预编译指令的位置。注意：这个过程是递归进行的，
+也就是说被包含的文件可能还包含其他文件。
+4 删除所有的注释 // 和 “/**/”
+5 添加行号和文件名标识，以便于编译时编译器产生调试用的行号信息及用于编译时产生错误或警告时能够
+显示行号。
+6 保留所有的#pragma编译器指令，因为编译器需要使用他们。
+
+
+** C预处理器有哪些重要的预处理指令？
+1 #define
+2 #include
+3 #ifdef
+4 #else
+5 #endif
+6 #ifndef
+7 #if
+8 #elif
+9 #line
+10 #error
+11 #pragma
+** 只进行预编译如何操作？
+#+begin_src sh
+  gcc -E source.c -o soruce.i
+#+end_src
+* C标准库

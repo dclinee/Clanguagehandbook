@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-02-11 Sat 06:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Macros in C</title>
+<meta name="author" content="dclinee" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Macros in C</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org84eab44">1. Examples of Macros in C</a>
+<ul>
+<li><a href="#org46862a5">1.1. 1. Object-Like Macro</a></li>
+<li><a href="#org3a11823">1.2. Function-Like Macro</a>
+<ul>
+<li><a href="#org3b704c7">1.2.1. Example one</a></li>
+<li><a href="#orgec9e93a">1.2.2. Example two</a></li>
+<li><a href="#org63a5d92">1.2.3. Another example of above example(Example two)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgac9b295">2. Conclusio</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org84eab44" class="outline-2">
+<h2 id="org84eab44"><span class="section-number-2">1.</span> Examples of Macros in C</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+A macro in C programming language is a block or set of satements of program code that can
+be replaced by macro #define directive.
+</p>
+</div>
+<div id="outline-container-org46862a5" class="outline-3">
+<h3 id="org46862a5"><span class="section-number-3">1.1.</span> 1. Object-Like Macro</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+This macro can be a pointer variable or identifier or variable defined using #define and
+it is replaced by its value. This is mainly used when numeric constants are required.
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #c397d8;">#define</span> <span style="color: #e7c547;">MAC</span> 100
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3a11823" class="outline-3">
+<h3 id="org3a11823"><span class="section-number-3">1.2.</span> Function-Like Macro</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+This macro is similar to function calling in  C programming language.
+In this, a function name is defined with arguments passed to the function.
+</p>
+</div>
+
+<div id="outline-container-org3b704c7" class="outline-4">
+<h4 id="org3b704c7"><span class="section-number-4">1.2.1.</span> Example one</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #c397d8;">#define</span> <span style="color: #e7c547;">ADD</span> <span style="color: #eaeaea;">(</span>p, q<span style="color: #eaeaea;">)</span> <span style="color: #eaeaea;">(</span>p<span style="color: #eaeaea;">)</span> + <span style="color: #eaeaea;">(</span>q<span style="color: #eaeaea;">)</span>;
+</pre>
+</div>
+<p>
+Before using the macro in C programming language you should note the following points:
+In C programming language, we use "define" for define a macro with "#" prefixed is used
+for defining constants for entire program, so when we define a constant with some macro
+name then in the entire program the defined constant is matched and is replaced with the
+value that is assigned at starting of the decalring the macro with "#define" statement.
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #c397d8;">#include</span> <span style="color: #eaeaea;">&lt;</span><span style="color: #70c0b1;">stdio.h</span><span style="color: #eaeaea;">&gt;</span>
+<span style="color: #c397d8;">#define</span> <span style="color: #e7c547;">PI</span> 3.1415926
+
+<span style="color: #7aa6da;">int</span> <span style="color: #e78c45;">main</span><span style="color: #eaeaea;">(</span><span style="color: #7aa6da;">void</span><span style="color: #eaeaea;">)</span>
+<span style="color: #eaeaea;">{</span>
+printf<span style="color: #70c0b1;">(</span><span style="color: #70c0b1;">"The value of PI is: %f</span><span style="color: #e7c547;">\</span><span style="color: #c397d8;">n</span><span style="color: #70c0b1;">"</span>, PI<span style="color: #70c0b1;">)</span>;
+<span style="color: #b9ca4a;">return</span> 0;
+<span style="color: #eaeaea;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgec9e93a" class="outline-4">
+<h4 id="orgec9e93a"><span class="section-number-4">1.2.2.</span> Example two</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Similarly, "#define" is used to include header file in C programming language. For example,
+We saw in above code "#define" in this "stdio.h" is a header file we use this header file
+because to read and print values we use "printf" and "scanf" are within this "stdio.h" header file.
+You should note that when the argument passed to the function-like macro where it support any datatype.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #c397d8;">  #include</span> <span style="color: #eaeaea;">&lt;</span><span style="color: #70c0b1;">stdio.h</span><span style="color: #eaeaea;">&gt;</span>
+<span style="color: #c397d8;"> #define</span> <span style="color: #e78c45;">INCREMENT</span><span style="color: #eaeaea;">(</span><span style="color: #e7c547;">n</span><span style="color: #eaeaea;">)</span> ++n
+<span style="color: #7aa6da;">int</span> <span style="color: #e78c45;">main</span><span style="color: #eaeaea;">(</span><span style="color: #7aa6da;">void</span><span style="color: #eaeaea;">)</span>
+  <span style="color: #eaeaea;">{</span>
+     <span style="color: #7aa6da;">char</span> *<span style="color: #e7c547;">p</span> = <span style="color: #70c0b1;">"dclinee"</span>;
+     <span style="color: #7aa6da;">int</span> <span style="color: #e7c547;">num</span> = 100;
+     printf<span style="color: #70c0b1;">(</span><span style="color: #70c0b1;">"This use char datatype %s</span><span style="color: #e7c547;">\</span><span style="color: #c397d8;">n</span><span style="color: #70c0b1;">"</span>, INCREMENT<span style="color: #e7c547;">(</span>p<span style="color: #e7c547;">)</span><span style="color: #70c0b1;">)</span>;
+     printf<span style="color: #70c0b1;">(</span><span style="color: #70c0b1;">"This use int datatype %d</span><span style="color: #e7c547;">\</span><span style="color: #c397d8;">n</span><span style="color: #70c0b1;">"</span>, INCREMENT<span style="color: #e7c547;">(</span>num<span style="color: #e7c547;">)</span><span style="color: #70c0b1;">)</span>;
+     <span style="color: #b9ca4a;">return</span> 0;
+  <span style="color: #eaeaea;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org63a5d92" class="outline-4">
+<h4 id="org63a5d92"><span class="section-number-4">1.2.3.</span> Another example of above example(Example two)</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+The macro can also be written in multiple lines starting the statements with '\' and no need to end '\'.
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #c397d8;">#include</span> <span style="color: #eaeaea;">&lt;</span><span style="color: #70c0b1;">stdio.h</span><span style="color: #eaeaea;">&gt;</span>
+<span style="color: #c397d8;">#define</span> <span style="color: #e78c45;">MACRO</span><span style="color: #eaeaea;">(</span><span style="color: #e7c547;">n</span>, <span style="color: #e7c547;">limit</span><span style="color: #eaeaea;">)</span> <span style="color: #b9ca4a;">while</span> <span style="color: #eaeaea;">(</span>n &lt; limit<span style="color: #eaeaea;">)</span> \
+    <span style="color: #eaeaea;">{</span> \
+    printf<span style="color: #70c0b1;">(</span><span style="color: #70c0b1;">"dclinee "</span><span style="color: #70c0b1;">)</span>; \
+    n++; \
+    <span style="color: #eaeaea;">}</span>
+<span style="color: #7aa6da;">int</span> <span style="color: #e78c45;">main</span><span style="color: #eaeaea;">(</span><span style="color: #7aa6da;">void</span><span style="color: #eaeaea;">)</span>
+  <span style="color: #eaeaea;">{</span>
+    <span style="color: #7aa6da;">int</span> <span style="color: #e7c547;">n</span> = 0;
+    MACRO<span style="color: #70c0b1;">(</span>n, 5<span style="color: #70c0b1;">)</span>;
+
+    <span style="color: #b9ca4a;">return</span> 0;
+  <span style="color: #eaeaea;">}</span>
+</pre>
+</div>
+
+<p>
+In C, the macro can use conditional statements like if-else directives also
+while defines that can be used for conditional completion.
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="orga1e2ffb"><span style="color: #c397d8;">#include</span> <span style="color: #eaeaea;">&lt;</span><span style="color: #70c0b1;">stdio.h</span><span style="color: #eaeaea;">&gt;</span>
+<span style="color: #7aa6da;">int</span> <span style="color: #e78c45;">main</span><span style="color: #eaeaea;">(</span><span style="color: #7aa6da;">void</span><span style="color: #eaeaea;">)</span>
+  <span style="color: #eaeaea;">{</span>
+<span style="color: #c397d8;">    #if</span> VERSION &gt;= 2
+    printf<span style="color: #70c0b1;">(</span><span style="color: #70c0b1;">"message "</span><span style="color: #70c0b1;">)</span>;
+<span style="color: #c397d8;">    #endif</span>
+    <span style="color: #b9ca4a;">return</span> 0;
+  <span style="color: #eaeaea;">}</span>
+</pre>
+</div>
+
+<p>
+If macro is used for a function-like macro which has arguments passed to it
+are not evaluated before macro expansion. Let us see the example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #c397d8;">#include</span> <span style="color: #eaeaea;">&lt;</span><span style="color: #70c0b1;">stdio.h</span><span style="color: #eaeaea;">&gt;</span>
+<span style="color: #c397d8;">#define</span> <span style="color: #e78c45;">DIV</span><span style="color: #eaeaea;">(</span><span style="color: #e7c547;">a</span>, <span style="color: #e7c547;">b</span><span style="color: #eaeaea;">)</span> <span style="color: #eaeaea;">(</span>a/b<span style="color: #eaeaea;">)</span>
+<span style="color: #7aa6da;">int</span> <span style="color: #e78c45;">main</span><span style="color: #eaeaea;">(</span><span style="color: #7aa6da;">void</span><span style="color: #eaeaea;">)</span>
+  <span style="color: #eaeaea;">{</span>
+    printf<span style="color: #70c0b1;">(</span><span style="color: #70c0b1;">"%d</span><span style="color: #e7c547;">\</span><span style="color: #c397d8;">n</span><span style="color: #70c0b1;">"</span>, DIV<span style="color: #e7c547;">(</span>5+3, 3+2<span style="color: #e7c547;">)</span><span style="color: #70c0b1;">)</span>;
+    <span style="color: #b9ca4a;">return</span> 0;
+  <span style="color: #eaeaea;">}</span>
+</pre>
+</div>
+
+<p>
+Here in above macro is expanded as 5+3/3+2 = 5+1+2=8 which is confusing so you can
+resolve by below modified macro.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #c397d8;">#include</span> <span style="color: #eaeaea;">&lt;</span><span style="color: #70c0b1;">stdio.h</span><span style="color: #eaeaea;">&gt;</span>
+<span style="color: #c397d8;">#define</span> <span style="color: #e78c45;">DIV</span><span style="color: #eaeaea;">(</span><span style="color: #e7c547;">a</span>, <span style="color: #e7c547;">b</span><span style="color: #eaeaea;">)</span> <span style="color: #eaeaea;">(</span>a<span style="color: #eaeaea;">)</span> / <span style="color: #eaeaea;">(</span>b<span style="color: #eaeaea;">)</span>
+<span style="color: #7aa6da;">int</span> <span style="color: #e78c45;">main</span><span style="color: #eaeaea;">(</span><span style="color: #7aa6da;">void</span><span style="color: #eaeaea;">)</span>
+  <span style="color: #eaeaea;">{</span>
+    printf<span style="color: #70c0b1;">(</span><span style="color: #70c0b1;">"%d</span><span style="color: #e7c547;">\</span><span style="color: #c397d8;">n</span><span style="color: #70c0b1;">"</span>, DIV<span style="color: #e7c547;">(</span>5+3, 3+2<span style="color: #e7c547;">)</span><span style="color: #70c0b1;">)</span>;
+
+    <span style="color: #b9ca4a;">return</span> 0;
+  <span style="color: #eaeaea;">}</span>
+</pre>
+</div>
+<p>
+The macro is expended as (5+3)/(3+2) = 8/5=1.
+</p>
+
+<p>
+The macro also supports to pass the tokens to the macro to concatenate tokens
+using the special operator "##" which is known as the token pasting operator.
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #c397d8;">#include</span> <span style="color: #eaeaea;">&lt;</span><span style="color: #70c0b1;">stdio.h</span><span style="color: #eaeaea;">&gt;</span>
+<span style="color: #c397d8;">#define</span> <span style="color: #e78c45;">concate</span><span style="color: #eaeaea;">(</span><span style="color: #e7c547;">p</span>, <span style="color: #e7c547;">q</span><span style="color: #eaeaea;">)</span> p##q
+
+<span style="color: #7aa6da;">int</span> <span style="color: #e78c45;">main</span><span style="color: #eaeaea;">(</span><span style="color: #7aa6da;">void</span><span style="color: #eaeaea;">)</span>
+  <span style="color: #eaeaea;">{</span>
+    printf<span style="color: #70c0b1;">(</span><span style="color: #70c0b1;">"%d</span><span style="color: #e7c547;">\</span><span style="color: #c397d8;">n</span><span style="color: #70c0b1;">"</span>, concate<span style="color: #e7c547;">(</span>56, 78<span style="color: #e7c547;">)</span><span style="color: #70c0b1;">)</span>;
+
+    <span style="color: #b9ca4a;">return</span> 0;
+  <span style="color: #eaeaea;">}</span>
+</pre>
+</div>
+
+<p>
+The macro also can be used to pass the token that can be converted to
+a string by using the "#" special symbol before the token.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #c397d8;">#include</span> <span style="color: #eaeaea;">&lt;</span><span style="color: #70c0b1;">stdio.h</span><span style="color: #eaeaea;">&gt;</span>
+<span style="color: #c397d8;">#define</span> <span style="color: #e78c45;">get_string</span><span style="color: #eaeaea;">(</span><span style="color: #e7c547;">n</span><span style="color: #eaeaea;">)</span> #n
+
+<span style="color: #7aa6da;">int</span> <span style="color: #e78c45;">main</span><span style="color: #eaeaea;">(</span><span style="color: #7aa6da;">void</span><span style="color: #eaeaea;">)</span>
+  <span style="color: #eaeaea;">{</span>
+    printf<span style="color: #70c0b1;">(</span><span style="color: #70c0b1;">"%s</span><span style="color: #e7c547;">\</span><span style="color: #c397d8;">n</span><span style="color: #70c0b1;">"</span>, get_string<span style="color: #e7c547;">(</span>dclinee<span style="color: #e7c547;">)</span><span style="color: #70c0b1;">)</span>;
+
+    <span style="color: #b9ca4a;">return</span> 0;
+  <span style="color: #eaeaea;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgac9b295" class="outline-2">
+<h2 id="orgac9b295"><span class="section-number-2">2.</span> Conclusio</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+In C programming language, the macro is not less than similar to functions,
+but macro has built-in macro also.In C, the macro is used to define any
+constant value or any variable with its value in the entire program
+that will be replaced by this macro name, where macro contains the set of
+code that will be called when themacro name is used in the program.
+The macro uses the “#define” directive to define the macro in C programming
+language. This is very useful to save time and have less code writing.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2023-02-05 Sun 00:00</p>
+<p class="author">Author: dclinee</p>
+<p class="date">Created: 2023-02-11 Sat 06:50</p>
+</div>
+</body>
+</html>

@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stlib.h>
+#include <string.h>
 #define SIZE 3
 int main()
 {
