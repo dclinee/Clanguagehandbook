@@ -1,0 +1,133 @@
+#+title: Return value of main() in C/C++
+#+author: dclinee
+#+date: <2023-02-18 Sat>
+The return value of main() function shows how the program exited.
+The normal exit of program is represented by zero return value.
+If the code has errors, fault etc., it will be terminated by non-zero value.
+
+* main() in C/C++
+Here is the syntax of main() function in C/C++ language:
+#+begin_src C
+  int main()
+    {
+      // your program
+      return 0;
+    }
+#+end_src
+
+The valid C/C++ main signatures are:
+
+#+begin_src C
+  int main();
+  int main(int argc, char* argv[]);
+  int main(int argc, char** argv);
+#+end_src
+
+In C/C++ language, the main() function can be left without return value.
+By default, it will return zero.
+
+It is prohibited to write void main() by the C++ standard which when written
+result is this compitation error: main() must return 'int'.
+#+begin_src C++
+  #include <iostream>
+  using namespace std;
+
+  void main()
+    {
+      cout <<"hello world.\n";
+    }
+#+end_src
+
+Bjarne Stroustrup, the creater of C++ language, said that the definition
+void main() {code} is not and never has been C++, nor has it even been C.
+
+Some compilers allow the usage of void main(). It works because the compiler
+does its best to generate code for programs. Compilers such as GCC will warn
+about non-standard forms for main(), but will process them. The linker isn't
+too worrid about the return type; it simply needs a symbol _main_ and when it
+find it, links it into the executable. The start-up code assumes that main
+has been defined in the standard manner. If main() returns to the start-up
+code, it collects the returned value as if the function returned an int,
+but that value is likely to be garbage. So, it sort of seems to work as long
+as you don't look for the exit status of your program.
+
+* the exit(0) function
+
+This function terminates the calling process immediately.
+
+The declaration of the function is _void exit(int status)_ where status is the
+status value returned to the parent process.
+
+** Example of the exit() function
+#+begin_src C
+  #include <stdio.h>
+  #include <stdlib.h>
+
+  int main(void)
+    {
+      printf("Start of the program.\n");
+
+      printf("Exiting the program\n");
+      exit(0);
+
+      printf("End of the program.\n");
+      return 0;
+    }
+#+end_src
+
+#+RESULTS:
+| Start   | of  | the     | program. |
+| Exiting | the | program |          |
+
+** The difference between exit() and return.
+. *return* returns from the current function; it's a language keyword like *for*
+or *break* etc.
+#+begin_src C
+  #include <stdio.h>
+
+  void f()
+    {
+      printf("Executing f\n");
+      return;
+    }
+
+  int main()
+    {
+      f();
+      printf("Back from f\n");
+    }
+#+end_src
+
+#+RESULTS:
+| Executing | f    |   |
+| Back      | from | f |
+
+. _exit()_  terminates the whole program, where you call it from.
+
+#+begin_src C
+  #include <stdio.h>
+  #include <stdlib.h>
+
+  void f()
+    {
+      printf("Executing f\n");
+      exit(0);
+    }
+
+  int main()
+    {
+      f();
+      printf("Back from f\n");
+    }
+#+end_src
+
+#+RESULTS:
+: Executing f
+
+*Note*: Show the returen value of current process
+#+begin_src sh
+  echo $?
+#+end_src
+
+#+RESULTS:
+: 0
