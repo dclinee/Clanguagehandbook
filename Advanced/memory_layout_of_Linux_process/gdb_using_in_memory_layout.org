@@ -1,0 +1,90 @@
+#+title: Using GNU's GDB Debugger Explaning Memory Layout And The Stack
+#+author: Peter Jay Salzman
+
+
+* Where Are We Going To Go?
+To effectively learn how to use GCB, you must understand frames, which are also
+called stack frames because they're the frames that comprise the stack. To learn
+about the stack, we need to learn about the memory layout of an executable prog-
+ram. The discussion will mainly be theoretical, but to keey things interesting
+we'll conclue the chapter with an example of the stack and stack frames using
+GDB.
+
+The material learned in this chapter may seem rather theoretical, but it does
+serve a few very useful purposes:
+    1. Understanding the stack is absolutely necessary for using a symbolic
+       debugger like GDB.
+    2. Knowing the memory layout of a process will help us understand what
+       exactly a segmentation fault (or segfault) is, and why they happen (or
+       sometimes, more importantly) don't happen when they should. In brief,
+       segfaults are the most common immediate cause a program to bomb.
+    3. A knowledge of a program's memory space can often allow us to figure out
+       the location of well-hidden bugs without the use of *print()* statements,
+       a compiler or even GDB！In the next section, which is a guest written
+       piece by one my friends, Mark Kim, we'll see some real Sherlock Holmes
+       style sleuthing. Mark homes in on a well hidden bug in somewhat lengthy
+       code. It only took him about 5 or 10 minutes, and all he did was look at
+       the program and use his knowledge of how a program's memory space works.
+       It's really impressive!
+
+So withoutfuther ado, let's take a look at how programs are laid out in memory.
+
+* Virtual Memory (VM)
+Whenever a process is created, the kernel provides a chunk of physical memory
+which can be located anywhere at all. However, through the magic of virtual
+memory(VM), the process believes it has all the memory on the computer. You
+might have heard "virtual memory" in the context of using hard drive space as
+memory when RAM runs out. That's called virtual memory too, but is largely
+unrelated to what we're talking about. The VM we're concerned with consists of
+the following principles:
+    1. Each process is given physical memory called the process's virtual
+       memory space.
+    2. A process in unware of the details of its physical memory(i.e. where it
+       physical resides). All the process knowns is how big the chunk is and
+       that its chunk begins at address 0.
+    3. Each process is unaware of any other chunks of VM belonging to other
+       processes.
+    4. Even if the process did know about other chunks of VM, it's physically
+       prevented from accessing that memory.
+
+Each time a process wants to read or write to memory, its request must be
+translated from a VM address to a physical memory address. Conversely, when the
+kernel needs to access the VM of a process, it must translate a physcial memory
+address into a VM address. There are two major issues with this:
+    1. Computers constantly access memory, so translations are very common;
+       they must be lighting fast.
+    2. How can the OS ensure that a process doesn't trample on another process's
+       VM?
+The answer to both questions lies in the fact that the OS doesn't manage VM by
+itself: it gets help from the CPU. Many CPUs contain a device called an MMU: a
+memory managementation unit. The MMU and the OS are jointly responsible for
+manageing VM, translating between virtual and physical addresses, enforcing
+permissions on which processes are allowed to access which memory locations, and
+enforcing read/write permissions on sections of a VM space, even for process
+that owns that space.
+
+It used to be the case that Linux could only be ported to architectures that had
+an MMU(so Linux wouldn't run on, say, an x286). However, in 1998, Linux was ported
+to the 68000 which had no MMU. This paved the way for embedded Linux and Linux on
+devices such has the Palm Pilot.
+
+** Exercises
+    1. Read a short Wikipedia blurb on the _MMU_.
+    2. Optional: If you want to know more about VM, here's a [[https://www.kernel.org/doc/html/latest/x86/x86_64/mm.html?highlight=virtual%20memory][link]]. This is much
+       more than you need to know.
+
+* Memory Layout
+
+* Stack Frames And The Stack
+
+* The Symbol Table
+
+* Preparing An Executable For Debugging
+
+* Investigating The Stack With GDB
+
+** Exercises
+   1.
+   2.
+   3.
+   4.
