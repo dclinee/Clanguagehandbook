@@ -1,9 +1,9 @@
 // hello_world.c
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(void)
 {
+  printf("Entry point address: %p\n", &main);
   printf("hello_world!\n");
-    return 0;
+  return 0;
 }
