@@ -74,7 +74,78 @@ devices such has the Palm Pilot.
        more than you need to know.
 
 * Memory Layout
+That's how VM works. For the most part, each process's VM space is laid out
+in a similar and predicatable manner.
+. *Text Segment*: The text segment contains the actual code to be executed. It's
+  usually sharable, so multiple instances of a program can share the text segment
+  to lower memory requirements. This segment is usually marked read-only, so a program
+  can't modify its own instructions.
 
+. Initialized Data segement: This segment contains global variables which initialzied
+  by the programmer.
+
+. Uninitialized Data Segment: Also named "bss" (block starting by symbol) which
+  was an opterator used by old assembler. This segment contains uninitialized
+  global variables. All variables in the segment are initialized to 0 or NULL pointers
+  before the program begins to execute.
+
+. The Stack: The stack is a collection of stack frames which will be described in the
+  next section. When a new frame needs to be added (as a resutl of a newly called function),
+  the stack grows downward.
+
+. The Heap: Most dynamic memory, whether requested via C's malloc() and friends
+  or C++'s new is doled out to the program from the heap. The C library also gets
+  dynamic memory for its own personal workspace from the heap as well. As more memory
+  is requested "on the fly", the heap grows upward.
+
+Given an object file or an executable, you can determine the size of each section
+(realize we're not talking about memory layout; we're talking about a disk file that
+will eventually be resident in memory). Given _hello_world-1.c, Makefile:
+
+#+begin_src C
+  // hello_world-1.c
+
+  #include <stdio.h>
+
+  int main(void)
+    {
+      printf("Hello world.\n");
+
+      return 0;
+    }
+#+end_src
+Compile it and link it separately with:
+
+#+begin_src shell
+  gcc -W -Wall -c hello_world-1.c
+  gcc -o hello_world-1 hello_world-1.o
+#+end_src
+
+You can use the size command to list out the size of the various sections:
+#+begin_src shell
+  size hello_world-1 hello_world-1.o
+#+end_src
+
+The data segment is the initialized and uninitialized segments combined.
+The dec and hex sections are the file size in decimal and hexidecimal format
+respectively.
+
+You can also get the size of the sections of the object file using "objdump -h".
+or "objdump -x".
+#+begin_src shell
+  objdump -x hello_world-1.o
+#+end_src
+
+** Execises
+    1. The size command didn't list a stack or heap segment for hello_world-1 or
+       hello_world-1.o. Why do you think that is?
+    2. There are no global variables in hello_world-1.c. Given an explanation for
+       why size reports that the data and bss segments have zero length for the
+       object file but non-zero length for the executable.
+    3. size and objdump report different sizes for the text segment. Can you guess
+       where the discrepancy comes from? Hint: How big is the discrepancy? See
+       anything of that length in the source code?
+    4. Optional: Read this link about object file formats.
 * Stack Frames And The Stack
 
 * The Symbol Table
