@@ -1,0 +1,115 @@
+#+TITLE: Volatile Keyword in C/C++
+#+DATE: <2023-03-10 Fri>
+
+Volatile in C/C++ programming language is a keyword which is used with variables to
+inform the compiler not to apply any optimizations to code dealing with the variable.
+This is used to avoid some assumptions that go into compiler optimizations which
+can break the code. This is mainly used in Embedded System programming and real time
+systems.
+
+* Syntax:
+#+BEGIN_SRC C
+  volatile <data_type> <variable_name>;
+  // or
+  <data_type> volatile <variable_name>;
+#+END_SRC
+
+* Example:
+
+#+BEGIN_SRC C
+  volatile int some_variable = 1;
+  // or
+  int volatile other_variable = 100;
+#+END_SRC
+
+As a general rule, all variables whose value can change suddenly due to an external
+reason (like an external device or another program thread) should be declared using
+volatile.
+
+Note that unnecessarily using volatile for all keywors will reduce performance and
+not using it when required will result in unexpected execution result.
+
+Compiler optimizations include:
+
+. caching variables
+. skip checking loop termination conditions or doing it at compile time only
+. pre-determining the conditional program path
+
+and many more. Volatile is the approach to keep the perfect balance between program
+correctness and performance.
+
+* Simple example
+
+To understand the importance of volatile in C/C++, let us consider a simple example
+(main.c) as below:
+
+#+BEGIN_SRC C
+  #include <stdio.h>
+  #include "other_header.h"
+
+  int main(void)
+    {
+      while(some_variable)
+        {};    // infinite loop
+    }
+#+END_SRC
+
+We will have a header file other_header.h as:
+#+BEGIN_SRC C
+  extern int some_variable;
+#+END_SRC
+
+We will have a common file name test.c to declare some_variable as:
+#+BEGIN_SRC C
+  #include "other_header.h"
+  int some_variable = 1;
+#+END_SRC
+
+Now, if we compile and execute main.c by linking it with test.c, it will fall into
+a infinite loop.
+
+#+BEGIN_SRC sh
+  gcc main.c test.c
+  ./a.out
+#+END_SRC
+
+This is only because of compiler optimizations.
+
+Our compiler(GNU GCC) will think intelligently and see that the value of some_variable
+variable is 1 and will avoid all other checks for the while loop and get into an
+infinite loop.
+
+The problem is that the value of some_variable can get changed inbetween and this will
+allow the while loop to break but as the compiler has optimized the code to check the value
+of some_variable only once and at the beginning, it will never reach the condition to
+get out of the loop.
+
+To prevent this, there are two options:
+. turn off all compiler optimizations
+. turn off compiler optimizations only for required code sections
+
+Turning off all compiler optimizations will greatly impact the overall performancw and
+hence, the better approach is to turn off optimizations for specific code sections.
+
+To solve this, we need to modify test.c as:
+
+#+BEGIN_SRC C
+  #include "other_header.h"
+  volatile int some_variable = 1;
+#+END_SRC
+
+Now, if we execute another thread in parallel to modify the value of some_variable
+variable to 0, the while loop will be stopped.
+
+* Real life use of volatile
+
+Variables should be declared volatile if its value can be changed asynchronously.
+Such situations include:
+. variables representing device or peripheral registers. Devides can get disconnected
+  or damaged anytime.
+. variables whose value is changed by a system call like interrupt service routine
+. global variabls
+. program is not thread sage
+. variables which are accessed in multiple threads
+
+Note that volatile should not be used as a synchronization method.
