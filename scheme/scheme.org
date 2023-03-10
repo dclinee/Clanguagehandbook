@@ -1,0 +1,40 @@
+#+TITLE: Scheme
+#+DATA: <2023-03-10 Fri>
+
+* Scheme
+  - probably the oldest lisp still used this day
+  -
+
+
+#+begin_src C :export result
+  #include <stdio.h>
+
+  int main(void)
+    {
+      printf("%d\n", (1 + 1 * 2));
+      return 0;
+    }
+
+#+end_src
+
+#+RESULTS:
+: 3
+
+#+begin_quote
+      printf
+      /   \
+  "%d\n"   +
+          /  \
+         1    *
+            /   \
+           1     2
+
+#+end_quote
+
+#+begin_src emacs-lisp
+    (print (+ 1
+              (* 1 2)))
+#+end_src
+
+#+RESULTS:
+: 3
