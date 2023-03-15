@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-  rect replace;
+  rect rplace;
   polar pplace;
 
   cout << "Enter the x and y values: ";
