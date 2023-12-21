@@ -1,4 +1,5 @@
 /*Magic number in C
+
  Steps to find the Magic number in C
 step 1:Declare an integer type variable and input a number from the user to store it in N.
 step 2:Get the sum of all digits of the original number and store it another variable A.
