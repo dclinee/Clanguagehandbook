@@ -1,6 +1,6 @@
 // calling.cpp -- defining, prototyping, and calling a functing
 #include <iostream>
-void simple();
+void simple();  // function prototyping
 
 int main()
 {
