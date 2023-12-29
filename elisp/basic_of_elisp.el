@@ -1,22 +1,26 @@
 
 ;; Basic of elisp
+;; function
 (defun hello-world (name)
   "Say hello to user whose name is NAME."
   (message "hello, %s" name))
 (hello-world "dclinee")
 (hello-world "world")
 
+;; variable
 (setq foo "I'm foo.")
 (message foo)
 
 (defvar foo "Did I have a value?"
   "A demo variable")
+;;calling variable
 foo
 
 (defvar bar "I'm bar"
   "a demo variable named \"bar\"")
+;; calling variable
 bar
-
+;; let and local variable
 (defun circle-area (radix)
   (let ((pi 3.1415926)
 	area)
@@ -26,13 +30,14 @@ bar
 (circle-area 3)
 
 ;; (let (bindings) body)
+;; let* and local variable
 (defun circle-area (radix)
   (let* ((pi 3.1415926)
 	 (area (* pi radix radix)))
     (message "radix is: %.2f and area is: %.2f"
 	     radix area)))
 (circle-area 4)
-
+;; lambda expression and function
 (funcall (lambda (name)
 	   (message "Hello, %s!" name)) "Emacser")
 
