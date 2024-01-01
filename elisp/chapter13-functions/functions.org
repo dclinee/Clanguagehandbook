@@ -5,6 +5,50 @@
 * 13 Functions
    A Lisp program is composed mainly of Lisp functions.
 ** 13.1 What's is a Function?
+   In a general sense, a function is a rule for carrying out a computation given input
+values called arguments. The result of the computation is called the value or return
+value of the function.
+   The computation can also have side effects, such as lasting changes in the values of
+variables or the contents of data structures.
+   A pure function is a function which, in addition to having no side effects, always
+returns the same value for the same combination of arguments, regardless of external
+such as machine type or system state.
+*** 13.1.1 lambda expression
+    A function (in the strict sense, i.e., a function object) which is written in Lisp.
+*** 13.1.2 primitive
+    A function which is calable from Lisp but is actually written in C. Primitives are
+also called *built-in* functions,or /subrs/.
+    Examples include functions like *car* and *append*.
+    #+begin_src emacs-lisp
+      (car '(1 12 23))
+    #+end_src
+
+    #+RESULTS:
+    : 1
+    #+begin_src emacs-lisp
+      (append '(1 2 3 4) '(5 6 7 8))
+    #+end_src
+
+    #+RESULTS:
+    | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+
+    In addition, all special forms (see below) are also considered primitives.
+    Usually, a function is implemented as a primitive because it is a fundamental part
+of Lisp(e.g., car), or because it provides a low-level interface to operation system
+services, or because it needs to run fast.
+    Unlike functions defined in Lisp, primitives can be modified or added only by changing
+the C sources and recompiled Emacs.
+*** 13.1.3 special form(expression)
+*** 13.1.4 macro
+*** 13.1.5 command
+*** 13.1.6 closure
+*** 13.1.7 byte-code function
+*** 13.1.8 autoload object
+*** 13.1.9 functionp object
+*** 13.1.10 func-arity function
+*** 13.1.11 subrp object
+*** 13.1.12 byte-code-function-p object
+*** 13.1.13 subr-arity subr
 
 ** 13.2 Lambda Expressions
 ** 13.3 Nameing a Function
