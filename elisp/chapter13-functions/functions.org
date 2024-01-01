@@ -25,12 +25,18 @@ also called *built-in* functions,or /subrs/.
 
     #+RESULTS:
     : 1
-    #+begin_src emacs-lisp
-      (append '(1 2 3 4) '(5 6 7 8))
-    #+end_src
+    #+BEGIN_SRC emacs-lisp
+      (APPEND '(1 2 3 4) '(5 6 7 8))
+    #+END_SRC
 
     #+RESULTS:
     | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+   #+BEGIN_SRC emacs-lisp
+     (cons '(1 2 3 4) '(5 6 7 8))
+   #+END_SRC
+
+   #+RESULTS:
+   | (1 2 3 4) | 5 | 6 | 7 | 8 |
 
     In addition, all special forms (see below) are also considered primitives.
     Usually, a function is implemented as a primitive because it is a fundamental part
