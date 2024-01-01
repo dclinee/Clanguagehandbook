@@ -1,0 +1,24 @@
+#+title: dclinee
+#+author: dclinee
+#+date:
+
+* 13 Functions
+   A Lisp program is composed mainly of Lisp functions.
+** 13.1 What's is a Function?
+
+** 13.2 Lambda Expressions
+** 13.3 Nameing a Function
+** 13.4 Defining Functions
+** 13.5 Calling Functions
+** 13.6 Mapping Functions
+** 13.7 Anonymous Functions
+** 13.8 Generic Functions
+** 13.9 Accessing Function Cell Contents
+** 13.10 Closures
+** 13.11 Advising Emacs Lisp Functions
+** 13.12 Declaring Functions Obsolete
+** 13.13 Inline Functions
+** 13.14 The declare Form
+** 13.15 Telling the compiler that a Function is Defined
+** 13.16 Determining whether a Function is Safe to Call
+** 13.17 Other Topics Related to Functions
