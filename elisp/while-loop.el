@@ -10,4 +10,5 @@
       (setq animals (cdr animals)))))
 (print-elements-of-list animals)
 
+
 ;;;  while loop.el ends here
