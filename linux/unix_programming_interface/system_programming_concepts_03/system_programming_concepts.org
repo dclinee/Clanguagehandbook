@@ -16,4 +16,4 @@ specifically the use of feature test macros and the standard system data types
 defined by SUSv3.
 
 * 3.1 System Calls
-A system call is
+A system call is a
