@@ -2,4 +2,17 @@
 #+AUTHOR: Michael Kerrisk
 #+date: <2023-02-22 Wed>
 
+This chapter covers various topics that are prerequisites for system programming.
+We begin by introducing system calls and details the steps that occur during their
+execution. We then consider library functions and how they differ from system calls,
+and couple this with a description of the(GNU)C library.
+    Whenever we make a system call or call a library function, we should always check
+the return status of the call in order to determine if it was successful. We describe
+how to perform such checks, and present a set of functions that are used in most of
+the example programs in this book to diagnose errors from system calls and library
+functions.
+     We conclude by looking at various issues related to portable programming,
+specifically the use of feature test macros and the standard system data types
+defined by SUSv3.
+
 * 3.1 System Calls
