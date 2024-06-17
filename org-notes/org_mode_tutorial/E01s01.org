@@ -17,9 +17,6 @@ Org-mode E01S01: Headlines & Outline mode
    Cursor on the headline and the Ctrl-c and Ctrl-w.
 
 
-
-
-
 * Top Items
 
 ** This one should be a level 2 headline under Top Items
