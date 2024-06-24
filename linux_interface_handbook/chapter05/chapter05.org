@@ -1,0 +1,10 @@
+#+title: FILE I/O : FURTHER DETAILS
+#+author: dclinee
+#+date: <2024-06-22 Sat>
+
+In this chapter, we extend the discussion of file I/O that we started in the previous
+chapter.
+    In continuing the discussion of the open() system call, we explain the concept of
+atomicity-the notion that the actions performed by a system call are executed as a 
+single uninterruptiable step. This is a nessarry requirement for the correct operation
+of many system calls.
