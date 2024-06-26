@@ -16,12 +16,17 @@ that allows you to perform mathermatical tasks on numbers.
   print(y)
 #+END_SRC
 
+#+RESULTS:
+
 #+BEGIN_SRC shell
 echo "hello world!"
 #+END_SRC
 
 #+RESULTS:
 : hello world!
+
+
+
 
 #+BEGIN_SRC C
     #include <stdio.h>
@@ -31,3 +36,5 @@ echo "hello world!"
       return 0;
     }
 #+END_SRC
+
+#+RESULTS:
