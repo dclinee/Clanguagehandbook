@@ -2,3 +2,13 @@
 #+author: Dclinee
 #+date: 2022-08-21
 Learn to program in lisp, one game at a time!
+
+#+BEGIN_SRC emacs-lisp
+  (setq name "dclinee"
+        email "dclinee@gmail.com")
+(message "Your name is: %s" name)
+(message "Your email is: %s" email)
+#+END_SRC
+
+#+RESULTS:
+: Your email is: dclinee@gmail.com
