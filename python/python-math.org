@@ -13,7 +13,6 @@ that allows you to perform mathermatical tasks on numbers.
   x = min(5, 15, 25)
   y = max(5, 15, 25)
 
-
   print(x)
   print(y)
 #+END_SRC
@@ -21,6 +20,8 @@ that allows you to perform mathermatical tasks on numbers.
 #+RESULTS:
 : 5
 : 25
+
+
 
 
 
