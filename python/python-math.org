@@ -8,15 +8,21 @@ that allows you to perform mathermatical tasks on numbers.
 * Built-In Math Functions
 ** The man() and max() functions can be used to find the lowest or highest value in an iterable:
 
-#+BEGIN_SRC python
+#+BEGIN_SRC python :results output
+  import math
   x = min(5, 15, 25)
   y = max(5, 15, 25)
+
 
   print(x)
   print(y)
 #+END_SRC
 
 #+RESULTS:
+: 5
+: 25
+
+
 
 #+BEGIN_SRC shell
 echo "hello world!"
@@ -28,13 +34,11 @@ echo "hello world!"
 
 
 
-#+BEGIN_SRC C
+#+BEGIN_SRC C :results output
     #include <stdio.h>
   int mian()
     {
-      printf("hello world!\n");
+      printf("hello, world.\n");
       return 0;
     }
 #+END_SRC
-
-#+RESULTS:
