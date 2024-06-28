@@ -34,7 +34,7 @@ echo "hello world!"
 
 
 
-#+BEGIN_SRC C :results output
+#+BEGIN_SRC C :export results
     #include <stdio.h>
   int mian()
     {
@@ -42,6 +42,8 @@ echo "hello world!"
       return 0;
     }
 #+END_SRC
+
+#+RESULTS:
 
 
 #+BEGIN_SRC python :results output
@@ -51,3 +53,10 @@ print(sys.version)
 
 #+RESULTS:
 : 3.12.3 (main, Apr 10 2024, 05:33:47) [GCC 13.2.0]
+
+#+BEGIN_SRC python
+return 1
+#+END_SRC
+
+#+RESULTS:
+: 1
