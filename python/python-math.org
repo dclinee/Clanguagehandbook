@@ -1,0 +1,59 @@
+#+title: Python Math
+#+author: dclinee
+#+date: <2024-06-26 Wed>
+
+Python has a set of built-in functions, including an extensive math module,
+that allows you to perform mathermatical tasks on numbers.
+
+* Built-In Math Functions
+** The man() and max() functions can be used to find the lowest or highest value in an iterable:
+
+#+BEGIN_SRC python :results output
+  import math
+  x = min(5, 15, 25)
+  y = max(5, 15, 25)
+
+  print(x)
+  print(y)
+#+END_SRC
+
+#+RESULTS:
+: 5
+: 25
+
+#+BEGIN_SRC shell
+echo "hello world!"
+#+END_SRC
+
+#+RESULTS:
+: hello world!
+
+
+
+
+#+BEGIN_SRC C :export results
+    #include <stdio.h>
+  int mian()
+    {
+      printf("hello, world.\n");
+      return 0;
+    }
+#+END_SRC
+
+#+RESULTS:
+
+
+#+BEGIN_SRC python :results output
+import sys
+print(sys.version)
+#+END_SRC
+
+#+RESULTS:
+: 3.12.3 (main, Apr 10 2024, 05:33:47) [GCC 13.2.0]
+
+#+BEGIN_SRC python
+return 1
+#+END_SRC
+
+#+RESULTS:
+: 1
