@@ -1,0 +1,125 @@
+#+title: II Programming Python
+#+author: dclinee
+#+date: <2024-06-28 Fri>
+
+* Python Data Types
+** Numbers
+The basic numerical types used in Python are:
++ Integers.
++ Floats(reals).
++ Complex numbers (pairs of floats).
+#+begin_src python
+  return (3 + 2)
+#+end_src
+
+#+RESULTS:
+: 5
+
+#+begin_src python
+  return (5 - 2)
+#+end_src
+
+#+RESULTS:
+: 3
+
+#+begin_src python
+  return (3 * 2)
+#+end_src
+
+#+RESULTS:
+: 6
+
+#+begin_src python
+  return (3 / 2)
+#+end_src
+
+#+RESULTS:
+: 1.5
+
+
+#+begin_src python
+  return ( 3** 2)
+#+end_src
+
+#+RESULTS:
+: 9
+
+#+begin_src python
+return (3 // 2)
+#+end_src
+
+#+RESULTS:
+: 1
+
+#+begin_src python
+return (12 % 5)
+#+end_src
+
+#+RESULTS:
+: 2
+
+#+begin_src python
+return (abs(-88))
+#+end_src
+
+#+RESULTS:
+: 88
+
+#+begin_src python
+return (1 + 2j)
+#+end_src
+
+#+RESULTS:
+| 1+2j |
+
+
+#+begin_src python
+return complex(1, 2)
+#+end_src
+
+#+RESULTS:
+| 1+2j |
+
+
+#+begin_src python
+return (1 + 2j).real
+#+end_src
+
+#+RESULTS:
+: 1.0
+
+
+#+begin_src python
+return (1 + 2j).imag
+#+end_src
+
+#+RESULTS:
+: 2.0
+
+
+#+begin_src python
+return abs(3 + 4j)
+#+end_src
+
+#+RESULTS:
+: 5.0
+
+
+#+begin_src python
+  Z = 1 + 2j
+  W = 3 - 1j
+  return (Z + W)
+#+end_src
+
+#+RESULTS:
+| 4+1j |
+
+
+#+begin_src python
+  Z = 1 + 2j
+  W = 3 - 1j
+  return (Z * W)
+#+end_src
+
+#+RESULTS:
+| 5+5j |
