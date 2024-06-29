@@ -21,10 +21,6 @@ that allows you to perform mathermatical tasks on numbers.
 : 5
 : 25
 
-
-
-
-
 #+BEGIN_SRC shell
 echo "hello world!"
 #+END_SRC
