@@ -1,0 +1,20 @@
+#+title: 9 Examples of for Loops in Linux Bash Scripts
+#+author: dclinee
+#+date: 2024.6.30
+
+
+* QUICK LINKS
+
+- The for Loop
+- simple for Loops
+- C-like for Loops
+- for Loops Using Word Arrays
+- for Loops Using Associative Arrays
+- Iterating Over the output of Commands
+- The Dazzling for Loop
+
+* KEY TAKEAWAYS
+
+-
+-
+-
