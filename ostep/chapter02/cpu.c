@@ -5,18 +5,18 @@
 #include "common.h"
 
 int
-main (int argc, char *argv[])
+main(int argc, char *argv[])
 {
-  if (argc != 2)
-    {
-      fprintf (stderr, "usage: cpu <string> \n");
-      exit (1);
+    if(argc != 2) {
+        fprintf(stderr, "usage: cpu <string>\n");
+        exit(1);
     }
-  char *str = argv[1];
-  while (1)
-    {
-      Spin(1);
-      printf ("%s\n", str);
+
+    char *str = argv[1];
+    while(1) {
+        Spin(1);
+        printf("%s\n", str);
     }
-  return 0;
+
+    return 0;
 }
