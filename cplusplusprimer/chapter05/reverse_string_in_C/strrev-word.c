@@ -4,11 +4,9 @@
 #include <stdlib.h>
 int main(void)
 {
-  char str[40]; // declare the size of character string
+  char str[40] = "dclinee"; // declare the size of character string
   printf("\n Enter a string to be reversed:");
-  scanf("%s", str);
-  char temp = strrev(str);
-  // use strrev() function to reverse a string
+  char* temp = strsep(str);
   printf("\n After the reverse of a string: %s", temp);
 
   return 0;
