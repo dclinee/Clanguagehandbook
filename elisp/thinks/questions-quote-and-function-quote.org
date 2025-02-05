@@ -1,0 +1,42 @@
+#+title: The Questions And Things That About Symbol Quote And Function Quote
+#+date: <2025-02-05 Wed>
+#+author: <dclinee>
+* 写在前面的话
+思考的深度，决定学习的广度。
+* 第一版：简单的了解
+ 在Emacs中，尤其是在自己的emacs配置文件当中，看到这个下面两个快捷键绑定，例如下面的代码块
+ 的描述，下面两个代码的执行效果是一样的。
+#+begin_src elisp
+  (global-set-key (kbd "C-c f") 'find-function)
+  (global-set-key (kbd "C-c f") #'find-function)
+#+end_src
+ 针对以上的描述，做为一个善于学习编程的人来说，或许要对这个现象进行提问和思考，这样就可以
+ 搞懂代码黑盒子后面的更深层的知识。思考如下：
+ 1. 既然Emacs Lisp支持两种形式的符号引用且效果的一样的，为什么会同时支持两种引用？
+ 2. 两种引用的背后的执行细节是什么，深层次的原理是什么，使用哪一种会更好？
+
+** 1、针对二者的解释说明
+*** 'find-function
+1）'find-function,这是最常见的引用函数的方式。
+2）它直接返回符号find-function,Emacs会将其解释为函数。
+3）举例：
+#+begin_src elisp
+  (global-set-key (kbd "C-c f") 'find-function)
+#+end_src
+;;这会C-c f绑定到find-function函数。
+
+*** #'find-function
+1）这是function宏的简写形式，等价于(function find-function)。
+2）它不仅返回符号find-function，还会在编译时检查改符号是否是一个有效的函数。
+3）举例：
+#+begin_src elisp
+  (global-set-key (kbd "C-c f") #'find-function)
+#+end_src
+解释：这会将C-c f绑定到find-function函数，但在编译时会进行额外的检查。
+
+*** 区别
+1）'find-function:简单的引用符号，不尽兴额外检查。
+2）#'find-function:在编译时检查符号是否为有效函数，更适合在需要严格检查的场合使用。
+
+*** 使用场景
+1）如果
