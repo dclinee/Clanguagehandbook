@@ -1,0 +1,105 @@
+#+title: Chapter 2: Lisp Data Type
+#+date: Feb 13 2025
+
+* 一、Emacs Lisp类型系统的核心特征
+** 1.动态类型（Dynamci Typing）
+#+begin_src elisp
+    (setq var 100)       ;var is integer type
+    (setq var "string")  ;var is string type
+    (setq var '(a b c))  ;var is list type
+#+end_src
+- 变量没有固定类型，值的类型在运行时动态确定
+- 类型的信息存储在值本身中，而非变量容器里
+#+RESULTS:
+| a | b | c |
+** 2.自类型化（Self-typing）
+#+begin_src elisp
+  (type-of 100)             ;integer
+  (type-of "hello")         ;string
+  (type-of '(a))            ;cons
+  #+end_src
+- 每个值携带自己类型的元数据
+- 运行时根据实际类型执行操作
+** 3.类型检查函数体系
+#+begin_src elisp
+  (integerp 100)
+  (listp '(a b))
+  (symbolp 'var)
+#+end_src
+- 所有的原始类型都有相对应的predicate函数
+- 返回t为真，返回nil为假
+* 类型检查函数分类
+** 基本类型检查
+#+CAPTION: 基本类型检查
+| 函数         | 检查类型     | 示例值             |
+|-------------+------------+-------------------|
+| integerp    | integer    | 100               |
+| floatp      | float      | 100.1             |
+| stringp     | string     | "hello"           |
+| symbolp     | symbol     | 'var              |
+| consp       | cons cell  | '(a . b)          |
+| listp       | list       | '(a b)            |
+| vectorp     | vector     | [1 2 3]           |
+| hash-tablep | hash table | (make-hash-table) |
+|             |            |                   |
+|-------------+------------+-------------------|
+** 复合类型检查
+#+begin_src elisp
+  (sequencep '(a b))
+  (arrayp "abc")
+  (bufferp (current-buffer))
+#+end_src
+
+** 特殊类型检查
+#+begin_src elisp
+  (functionp '+)
+  (commandp 'next-line)
+  (macrop 'when)
+#+end_src
+* 类型系统运行机制
+** 运行时类型校验示例
+#+begin_src elisp
+        (defun safe-add (a b)
+          (if (and (numberp a) (numberp b)
+                   (+ a b))
+              (error "Arguments must be numbers.")))
+#+end_src
+** 类型错误案例
+#+begin_src elisp
+  (+ "5" 3)    ;error: (wrong-type-argument number-or-marker-p "5")
+#+end_src
+** 自动类型转换函数
+#+begin_src elisp
+  (string-to-number "100")
+  (number-to-string 100)
+#+end_src
+* 四、与静态类型语言对比
+| 特性          | C语言     | Emacs Lisp    |
+|--------------+----------+---------------|
+| 类型声明       | 显示声明   | 无类型声明      |
+| 类型检查时机   | 编译时检查 | 运行时检查      |
+| 变量类型可变性 | 固定类型   | 可存储任意类型值 |
+| 错误检查方式   | 编译错误   | 运行时信号错误  |
+|              |          |               |
+|--------------+----------+---------------|
+
+* 五、高级类型操作
+** 通用类型查询
+#+begin_src elisp
+  (type-of 'hello)
+  (type-of [1 2])
+  (type-of (make-hash-table))
+#+end_src
+** 类型继承检查
+#+begin_src elisp
+  (cl-typep "abc" 'sequence)
+  (cl-typep '(a b) 'list)
+#+end_src
+** 自定义类型检查
+#+begin_src elisp
+  (defun even-integer-p (obj)
+    (and (integerp obj) (cl-evenp obj)))
+  (even-integer-p 4)
+  (even-integer-p 5)
+
+#+end_src

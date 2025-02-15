@@ -1,0 +1,55 @@
+#+title: Process and Subprocess
+#+date: <2025-2-12>
+#+author: dclinee
+* Create a new process
+#+begin_src C
+  #include <stdio.h>
+  #include <unistd.h>
+  int main()
+    {
+      pid_t pid = fork();
+
+      if (pid < 0){
+        // Create child process failed.
+        perror("fork failed");
+        return 1;
+      }else if (pid == 0){
+        // Child process
+        printf("This is a child process. PID: %d, Parent PID: %d\n", getpid(), getppid());
+      }else{
+        // Parent process
+        printf("This is a parent process. PID: %d, Child PID: %d\n", getpid(), pid);
+      }
+        return 0;
+    }
+#+end_src
+
+#+RESULTS:
+| This is a parent process. PID: 9263 | Child PID: 9265 |
+| This is a child process. PID: 9265  | Parent PID: 1   |
+
+#+begin_src python
+
+   import subprocess
+
+   #创建子进程执行ls命令
+   result = subprocess.run(['ls', '-l'], capture_output=True, text=True)
+
+   if result.returncode == 0:
+       print("子进程执行成功")
+       print(result.stdout)
+   else:
+      print("子进程执行失败")
+      print(result.stderr)
+
+#+end_src
+
+#+RESULTS:
+: None
+
+
+* Inter-Process Communication
+** Named Pip: FIFO
+
+** Message Queue
+** Shared Memory
